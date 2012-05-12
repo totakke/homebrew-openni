@@ -4,7 +4,7 @@ require 'formula'
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 
 class Openni < Formula
-  homepage ''
+  homepage 'https://github.com/totakke/openni-formula'
   url 'https://github.com/OpenNI/OpenNI/tarball/master'
   version 'master'
   md5 '12389c56bf3685a741f6bcfa068585ff'
@@ -13,13 +13,6 @@ class Openni < Formula
   depends_on 'doxygen'
 
   def install
-    # ENV.x11 # if your formula requires any X11 headers
-    # ENV.j1  # if your formula's build system can't parallelize
-
-#    system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
-#    system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
-    # system "cmake . #{std_cmake_parameters}"
-#    system "make install" # if this fails, try separate make/make install steps
 
     cd 'Platform/Linux/CreateRedist'
 
