@@ -5,9 +5,15 @@ require 'formula'
 
 class Openni < Formula
   homepage 'https://github.com/totakke/openni-formula'
-  url 'https://github.com/OpenNI/OpenNI/tarball/master'
-  version 'master'
+  url 'https://github.com/OpenNI/OpenNI/tarball/Stable-1.5.2.23'
+  version '1.5.2.23'
   md5 '12389c56bf3685a741f6bcfa068585ff'
+
+  devel do
+    url 'https://github.com/PrimeSense/Sensor/tarball/Unstable-1.5.2.23'
+    version '1.5.2.23'
+    md5 ''
+  end
 
   depends_on 'libusb-freenect'
   depends_on 'doxygen'
@@ -47,6 +53,10 @@ class Openni < Formula
 
     # Install docs
     doc.install Dir['Documentation']
+
+    ohai 'Please setup manually:
+  $ sudo mkdir /var/lib/ni
+  $ sudo niReg -r /usr/local/lib/libnim*.dylib'
     
   end
 
