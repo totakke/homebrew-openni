@@ -39,15 +39,28 @@ class Openni < Formula
     # Install includes
     include.install Dir['Include/*']
 
+=begin
     # NOTE: Need to create /var/lib/ni direcotry for registering modules.
     #       A user need to register them manually after installing.
-#    system "#{bin}/niReg -r #{lib}/libnimMockNodes.dylib"
-#    system "#{bin}/niReg -r #{lib}/libnimCodecs.dylib"
-#    system "#{bin}/niReg -r #{lib}/libnimRecorder.dylib"
+    var.mkpath
+    if !File.exist?("#{var}/lib") then
+      mkdir "#{var}/lib"
+    end
+    ni_dir = "#{var}/lib/ni"
+    if !File.exist?(ni_dir) then
+      mkdir ni_dir
+    end
+    system "export DYLD_LIBRARY_PATH=#{lib}:$DYLD_LIBRARY_PATH"
+    system "Bin/niReg -r #{lib}/libnimMockNodes.dylib " + ni_dir
+    system "Bin/niReg -r #{lib}/libnimCodecs.dylib " + ni_dir
+    system "Bin/niReg -r #{lib}/libnimRecorder.dylib " + ni_dir
+=end
 
     # Install jar files
-    mkdir "#{prefix}/jar"
-    system "cp -r Jar/* #{prefix}/jar"
+    share.mkpath
+    jar_dir = "#{share}/java"
+    mkdir jar_dir
+    system 'cp -r Jar/* ' + jar_dir
 
     # Install samples
     mkdir "#{prefix}/sample"
@@ -57,11 +70,13 @@ class Openni < Formula
     doc.install Dir['Documentation']
 
     # Manual setup instruction
-    ohai 'Please setup manually:
-
-  $ sudo mkdir /var/lib/ni
-  $ sudo niReg -r /usr/local/lib/libnim*.dylib
-'
+    ohai 'Please setup manually:'
+    if !File.exist?('/var/lib/ni') then
+      ohai '  $ sudo mkdir -p /var/lib/ni'
+    end
+    ohai '  $ sudo niReg /usr/local/lib/libnimMockNodes.dylib'
+    ohai '  $ sudo niReg /usr/local/lib/libnimCodecs.dylib'
+    ohai '  $ sudo niReg /usr/local/lib/libnimRecorder.dylib'
     
   end
 

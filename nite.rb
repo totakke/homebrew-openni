@@ -1,29 +1,51 @@
 require 'formula'
 
-# Documentation: https://github.com/mxcl/homebrew/wiki/Formula-Cookbook
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-
 class Nite < Formula
-  homepage ''
-  url 'https://github.com/OpenNI/OpenNI.git'
-  md5 ''
 
-  # depends_on 'cmake' => :build
+  homepage 'https://github.com/totakke/openni-formula'
+  url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
+  version '1.5.2.21'
+  md5 '' # TODO
+
+  devel do
+    url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
+    version '1.5.2.21-unstable'
+    md5 '' # TODO
+  end
+
+  depends_on 'openni'
 
   def install
-    # ENV.x11 # if your formula requires any X11 headers
-    # ENV.j1  # if your formula's build system can't parallelize
 
-    system "./configure", "--disable-debug", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}"
-    # system "cmake . #{std_cmake_parameters}"
-    system "make install" # if this fails, try separate make/make install steps
+    # Install libs
+    lib.install Dir['Bin/libXnVNite*.dylib']
+    lib.install Dir['Bin/LibXnVCNITE*.dylib']
+    lib.install Dir['Bin/libXnVNITE.jni*.dylib']
+
+    # Install includes
+    include.install Dir['Include/*']
+
+    # Install jar
+    share.mkpath
+    jar_dir = "#{share}/java"
+    mkdir jar_dir
+    system "cp Bin/com.primesense.NITE.jar " + jar_dir
+
+    #
+    primesense_dir = "#{etc}/primesense"
+    if !File.exist?(primesense_dir) then
+      mkdir primesense_dir
+    end
+    
+
+    # Add license
+    system 'niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4='
+
+    # Run make
+    if File.exist?('Makefile') then
+      system 'make'
+    end
+
   end
 
-  def test
-    # This test will fail and we won't accept that! It's enough to just replace
-    # "false" with the main program this formula installs, but it'd be nice if you
-    # were more thorough. Run the test with `brew test openni`.
-    system "false"
-  end
 end
