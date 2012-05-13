@@ -1,18 +1,20 @@
 require 'formula'
 
-# Documentation: https://github.com/mxcl/homebrew/wiki/Formula-Cookbook
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-
 class Openni < Formula
+
   homepage 'https://github.com/totakke/openni-formula'
   url 'https://github.com/OpenNI/OpenNI/tarball/Stable-1.5.2.23'
   version '1.5.2.23'
   md5 '12389c56bf3685a741f6bcfa068585ff'
 
+  @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
+
   devel do
-    url 'https://github.com/PrimeSense/Sensor/tarball/Unstable-1.5.2.23'
-    version '1.5.2.23'
-    md5 ''
+    url 'https://github.com/OpenNI/OpenNI/tarball/Unstable-1.5.2.23'
+    version '1.5.2.23-unstable'
+    md5 '0a74f9f5a8ac9af1318347ca8dbdc50d'
+
+    @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
   end
 
   depends_on 'libusb-freenect'
@@ -26,7 +28,7 @@ class Openni < Formula
     system 'chmod u+x RedistMaker'
     system './RedistMaker'
 
-    cd '../Redist/OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
+    cd '../Redist/' + @@redist_dir_name
 
     # Install bins
     bin.install Dir['Bin/ni*']
@@ -54,9 +56,12 @@ class Openni < Formula
     # Install docs
     doc.install Dir['Documentation']
 
+    # Manual setup instruction
     ohai 'Please setup manually:
+
   $ sudo mkdir /var/lib/ni
-  $ sudo niReg -r /usr/local/lib/libnim*.dylib'
+  $ sudo niReg -r /usr/local/lib/libnim*.dylib
+'
     
   end
 

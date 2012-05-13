@@ -1,60 +1,65 @@
 require 'formula'
 
-# Documentation: https://github.com/mxcl/homebrew/wiki/Formula-Cookbook
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
+class SensorKinect < Formula
 
-class Openni < Formula
-  homepage ''
-  url 'https://github.com/OpenNI/OpenNI/tarball/master'
-  version 'master'
-  md5 '12389c56bf3685a741f6bcfa068585ff'
+  homepage 'https://github.com/totakke/openni-formula'
+  url 'https://github.com/avin2/SensorKinect/tarball/master'
+  version '5.0.3.3'
+  md5 '' # TODO
 
-  depends_on 'libusb-freenect'
-  depends_on 'doxygen'
+  @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.0.3.3'
+
+  devel do
+    url 'https://github.com/avin2/SensorKinect/tarball/unstable'
+    version '5.1.0.25-unstable'
+    md5 '' # TODO
+
+    @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.25'
+  end
+
+  depends_on 'openni'
 
   def install
-    # ENV.x11 # if your formula requires any X11 headers
-    # ENV.j1  # if your formula's build system can't parallelize
 
-#    system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
-#    system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
-    # system "cmake . #{std_cmake_parameters}"
-#    system "make install" # if this fails, try separate make/make install steps
-
+    config_dir = "#{etc}/primesense"
+    
     cd 'Platform/Linux/CreateRedist'
 
-    # Build OpenNI
+    # Build SnesorKinect
     system 'chmod u+x RedistMaker'
     system './RedistMaker'
 
-    cd '../Redist/OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
+    cd '../Redist/' + @@redist_dir_name
+
+    # Create config directory
+    if !File.exist?(config_dir) then
+      mkdir config_dir
+    end
 
     # Install bins
-    bin.install Dir['Bin/ni*']
+    bin.install Dir['Bin/*']
 
     # Install libs
     lib.install Dir['Lib/*']
 
-    # Install includes
-    include.install Dir['Include/*']
-
+    # Register modules
     # NOTE: Need to create /var/lib/ni direcotry for registering modules.
     #       A user need to register them manually after installing.
-#    system "#{bin}/niReg -r #{lib}/libnimMockNodes.dylib"
-#    system "#{bin}/niReg -r #{lib}/libnimCodecs.dylib"
-#    system "#{bin}/niReg -r #{lib}/libnimRecorder.dylib"
+#    system "#{bin}/niReg -r #{lib}/libXnDeviceSensorV2.dylib #{etc}/primesense"
+#    system "#{bin}/niReg -r #{lib}/libXnDeviceFile.dylib #{etc}/primesense"
 
-    # Install jar files
-    mkdir "#{prefix}/jar"
-    system "cp -r Jar/* #{prefix}/jar"
+    # Copy config file
+    system 'cp -f Config/GlobalDefaults.ini ' + config_dir
 
-    # Install samples
-    mkdir "#{prefix}/sample"
-    system "cp -r Samples/* #{prefix}/sample"
+    # Manual setup instruction
+    ohai 'Please setup manually:
 
-    # Install docs
-    doc.install Dir['Documentation']
-    
+  $ sudo mkdir /var/lib/ni
+  $ sudo niReg -r /urr/local/lib/libXnDevice*.dylib /usr/local/etc/primesense
+  $ sudo mkdir -p /var/log/primesense/XnSensorServer
+  $ sudo chmod a+w /var/log/primesense/XnSensorServer
+'
+  
   end
-
+    
 end
