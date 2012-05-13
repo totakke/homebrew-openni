@@ -10,10 +10,16 @@ libusb-freenect is for libfreenect library and works.
 
 ### Prepare
 
+First, download related formulas:
+
     $ cd /usr/local/Library/Formula
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/openni.rb"
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor.rb"
     $ curl --insecure -O "https://raw.github.com/OpenKinect/libfreenect/master/platform/osx/homebrew/libusb-freenect.rb"
+
+If you want to use Kinect sensor (not Xtion), download sensor-kinect.rb instead:
+
+    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor-kinect.rb"
 
 ### Install
 
@@ -29,4 +35,15 @@ Install __unstable__ release:
     
 ### Uninstall
 
+Uninstall from /usr/local:
+
+    $ brew uninstall sensor
     $ brew uninstall openni
+
+For cleaning all:
+
+    $ sudo rm -rf /var/lib/ni /var/log/primesense/XnSensorServer /usr/local/etc/primesense
+
+## License
+
+TODO
