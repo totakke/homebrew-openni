@@ -52,14 +52,17 @@ class SensorKinect < Formula
     system 'cp -f Config/GlobalDefaults.ini ' + config_dir
 
     # Manual setup instruction
-    ohai 'Please setup manually:
+   ohai 'Please setup manually:'
+    if !File.exist?('/var/lib/ni') then
+      ohai '  $ sudo mkdir -p /var/lib/ni'
+    end
+    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceSensorV2.dylib /usr/local/etc/primesense'
+    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense'
+    if !File.exist?('/var/log/primesense/XnSensorServer') then
+      ohai '  $ sudo mkdir -p /var/log/primesense/XnSensorServer'
+      ohai '  $ sudo chmod a+w /var/log/primesense/XnSensorServer'
+    end
 
-  $ sudo mkdir /var/lib/ni
-  $ sudo niReg -r /urr/local/lib/libXnDevice*.dylib /usr/local/etc/primesense
-  $ sudo mkdir -p /var/log/primesense/XnSensorServer
-  $ sudo chmod a+w /var/log/primesense/XnSensorServer
-'
-  
   end
     
 end
