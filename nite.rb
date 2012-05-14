@@ -78,8 +78,8 @@ class Nite < Formula
     if !File.exist?('/var/lib/ni') then
       ohai '  $ sudo mkdir -p /var/lib/ni'
     end
-    ohai '  $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/etc/primesense/Features_1_5_2'
-    ohai '  $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/etc/primesense/Hands_1_5_2'
+    ohai '  $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/local/etc/primesense/Features_1_5_2'
+    ohai '  $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/local/etc/primesense/Hands_1_5_2'
     ohai '  $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4='
 
   end

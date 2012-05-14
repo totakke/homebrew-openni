@@ -25,7 +25,7 @@ class Openni < Formula
     cd 'Platform/Linux/CreateRedist'
 
     # Build OpenNI
-    system 'chmod u+x RedistMaker'
+    chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
     cd '../Redist/' + @@redist_dir_name
@@ -57,14 +57,14 @@ class Openni < Formula
 =end
 
     # Install jar files
-    share.mkpath
     jar_dir = "#{share}/java"
-    mkdir jar_dir
-    system 'cp -r Jar/* ' + jar_dir
+    mkpath jar_dir
+    cp_r Dir['Jar/*'], jar_dir
 
     # Install samples
-    mkdir "#{prefix}/sample"
-    system "cp -r Samples/* #{prefix}/sample"
+    sample_dir = "#{prefix}/sample"
+    mkpath sample_dir
+    cp_r Dir['Samples/*'], sample_dir
 
     # Install docs
     doc.install Dir['Documentation']

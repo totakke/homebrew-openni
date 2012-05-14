@@ -25,14 +25,14 @@ class Sensor < Formula
     cd 'Platform/Linux/CreateRedist'
 
     # Build Sensor
-    system 'chmod u+x RedistMaker'
+    chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
     cd '../Redist/' + @@redist_dir_name
 
     # Create config directory
     if !File.exist?(config_dir) then
-      mkdir config_dir
+      mkpath config_dir
     end
 
     # Install bins
@@ -48,7 +48,7 @@ class Sensor < Formula
 #   system "#{bin}/niReg -r #{lib}/libXnDeviceFile.dylib #{etc}/primesense"
 
     # Copy config file
-    system 'cp -f Config/GlobalDefaults.ini ' + config_dir
+    cp 'Config/GlobalDefautls.ini', config_dir
 
     # Manual setup instruction
     ohai 'Please setup manually:'

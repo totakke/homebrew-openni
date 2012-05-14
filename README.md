@@ -15,32 +15,64 @@ First, download related formulas:
     $ cd /usr/local/Library/Formula
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/openni.rb"
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor.rb"
+    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/nite.rb"
     $ curl --insecure -O "https://raw.github.com/OpenKinect/libfreenect/master/platform/osx/homebrew/libusb-freenect.rb"
 
-If you want to use Kinect sensor (not Xtion), download sensor-kinect.rb instead:
+If you want to use Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb:
 
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor-kinect.rb"
 
 ### Install
 
-Install __stable__ release:
+Install OpenNI, Sensor (or SensorKinect), and NITE with Homebrew.
 
     $ brew install openni
-    $ brew install sensor
-    
-Install __unstable__ release:
+    $ brew install sensor (or $ brew install sensor-kinect)
+    $ brew install nite
 
-    $ brew install --devel openni
-    $ brew install --devel sensor
+If you want to install unstable release, add option "--devel". 
+
+You have to setup manually after Homebrew installation.  
+First, register modules.
+
+    $ sudo mkdir -p /var/lib/ni
+    $ sudo niReg /usr/local/lib/libnimMockNodes.dylib
+    $ sudo niReg /usr/local/lib/libnimCodecs.dylib
+    $ sudo niReg /usr/local/lib/libnimRecorder.dylib
+    $ sudo niReg /usr/local/lib/libXnDeviceSensorV2.dylib /usr/local/etc/primesense
+    $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense
+    $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/etc/primesense/Features_1_5_2
+    $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/etc/primesense/Hands_1_5_2
+    
+Then, create a log directory for XnSensorServer, and enable it to be accessed by all users.
+
+    $ sudo mkdir -p /var/log/primesense/XnSensorServer
+    $ sudo chmod a+w /var/log/primesense/XnSensorServer
+
+Finally, register license of NITE.
+
+	$ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
+    
     
 ### Uninstall
 
-Uninstall from /usr/local:
+Unregister modules manually.
 
-    $ brew uninstall sensor
+	$ sudo niReg -u /usr/local/lib/libnimMockNodes.dylib
+    $ sudo niReg -u /usr/local/lib/libnimCodecs.dylib
+    $ sudo niReg -u /usr/local/lib/libnimRecorder.dylib
+    $ sudo niReg -u /usr/local/lib/libXnDeviceSensorV2.dylib /usr/local/etc/primesense
+    $ sudo niReg -u /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense
+    $ sudo niReg -u /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/etc/primesense/Features_1_5_2
+    $ sudo niReg -u /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/etc/primesense/Hands_1_5_2
+
+Uninstall OpenNI, Sensor (or SensorKinect), and NITE with Homebrew.
+
+	$ brew uninstall nite
+    $ brew uninstall sensor (or $ brew uninstall sensor-kinect)
     $ brew uninstall openni
 
-For cleaning all:
+If you want to clean entirely,
 
     $ sudo rm -rf /var/lib/ni /var/log/primesense/XnSensorServer /usr/local/etc/primesense
 
