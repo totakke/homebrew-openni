@@ -24,6 +24,14 @@ class Sensor < Formula
 
     cd 'Platform/Linux/CreateRedist'
 
+    # Fix a bug in RedistMaker
+    f = File.open('RedistMaker', 'r')
+    buffer = f.read();
+    buffer.gsub!('-j$(calc_jobs_number)', '-j 1');
+    f = File.open('RedistMaker', 'w')
+    f.write(buffer)
+    f.close()
+
     # Build Sensor
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
@@ -48,7 +56,7 @@ class Sensor < Formula
 #   system "#{bin}/niReg -r #{lib}/libXnDeviceFile.dylib #{etc}/primesense"
 
     # Copy config file
-    cp 'Config/GlobalDefautls.ini', config_dir
+    cp 'Config/GlobalDefaults.ini', config_dir
 
     # Manual setup instruction
     ohai 'Please setup manually:'
