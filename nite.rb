@@ -1,7 +1,7 @@
 #
 #   openni-formula
 #   https://github.com/totakke/openni-formula
-#   Copyright (C) 2011, Toshiki TAKEUCHI.
+#   Copyright (C) 2012, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -90,6 +90,15 @@ class Nite < Formula
     if File.exist?('Makefile') then
       system 'make'
     end
+
+    # Install samples
+    sample_dir = "#{prefix}/sample"
+    mkpath sample_dir
+    cp_r Dir['Samples/*'], sample_dir
+    prefix.install 'Data'
+
+    # Install docs
+    doc.install Dir['Documentation']
 
     # TODO: Manual setup instruction
     ohai 'Please setup manually:'

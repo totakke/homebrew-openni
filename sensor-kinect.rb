@@ -1,7 +1,7 @@
 #
 #   openni-formula
 #   https://github.com/totakke/openni-formula
-#   Copyright (C) 2011, Toshiki TAKEUCHI.
+#   Copyright (C) 2012, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,19 +21,21 @@ require 'formula'
 class SensorKinect < Formula
 
   homepage 'https://github.com/totakke/openni-formula'
-  url 'https://github.com/avin2/SensorKinect/tarball/master'
-  version '5.0.3.3'
-  md5 '' # TODO
+  url 'https://github.com/avin2/SensorKinect/tarball/unstable'
+  version '5.1.0.25-unstable'
+  md5 '0635fffa182277bcdbec599c0fee950e'
 
-  @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.0.3.3'
+  @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.25'
 
+=begin
   devel do
     url 'https://github.com/avin2/SensorKinect/tarball/unstable'
     version '5.1.0.25-unstable'
-    md5 '' # TODO
+    md5 '0635fffa182277bcdbec599c0fee950e'
 
     @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.25'
   end
+=end
 
   depends_on 'openni'
 
@@ -42,6 +44,14 @@ class SensorKinect < Formula
     config_dir = "#{etc}/primesense"
     
     cd 'Platform/Linux/CreateRedist'
+
+    # Fix a bug in RedistMaker
+    f = File.open('RedistMaker', 'r')
+    buffer = f.read();
+    buffer.gsub!('-j$(calc_jobs_number)', '-j 1');
+    f = File.open('RedistMaker', 'w')
+    f.write(buffer)
+    f.close()
 
     # Build SnesorKinect
     chmod 0755, 'RedistMaker'
@@ -67,14 +77,14 @@ class SensorKinect < Formula
 #    system "#{bin}/niReg -r #{lib}/libXnDeviceFile.dylib #{etc}/primesense"
 
     # Copy config file
-    cp 'Config/GlobalDefaults.ini', config_dir
+    cp 'Config/GlobalDefaultsKinect.ini', config_dir
 
     # Manual setup instruction
     ohai 'Please setup manually:'
     if !File.exist?('/var/lib/ni') then
       ohai '  $ sudo mkdir -p /var/lib/ni'
     end
-    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceSensorV2.dylib /usr/local/etc/primesense'
+    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceSensorV2KM.dylib /usr/local/etc/primesense'
     ohai '  $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense'
     if !File.exist?('/var/log/primesense/XnSensorServer') then
       ohai '  $ sudo mkdir -p /var/log/primesense/XnSensorServer'
