@@ -58,6 +58,9 @@ Install Sensor.
     $ sudo niReg /usr/local/lib/libXnDeviceSensorV2.dylib /usr/local/etc/primesense
     $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense
     
+    $ sudo mkdir -p /var/log/primesense/XnSensorServer
+    $ sudo chmod a+w /var/log/primesense/XnSensorServer 
+    
 (Or install SensorKinect instead if you want to use Kinect sensor.)
 
 	$ brew install sensor-kinect
