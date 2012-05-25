@@ -36,6 +36,8 @@ class Openni < Formula
   end
 
   depends_on 'libusb-freenect'
+  depends_on 'libtool'
+  depends_on 'automake'
   depends_on 'doxygen'
 
   def install
