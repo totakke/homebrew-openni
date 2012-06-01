@@ -23,17 +23,19 @@ class Nite < Formula
   homepage 'https://github.com/totakke/openni-formula'
   url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
   version '1.5.2.21'
-  md5 '059d9a2315a0244dc86fea9ad03e0fcf'
+  md5 '619d9fe68e376e650b17e52c794bdc37'
 
   devel do
     url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
     version '1.5.2.21-unstable'
-    md5 '059d9a2315a0244dc86fea9ad03e0fcf'
+    md5 '619d9fe68e376e650b17e52c794bdc37'
   end
 
   depends_on 'openni'
 
   def install
+
+    ohai 'Installing...'
 
     # Install libs
     lib.install Dir['Bin/libXnVNite*.dylib']

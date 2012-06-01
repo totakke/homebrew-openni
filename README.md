@@ -1,24 +1,29 @@
 # openni-formula
 
-This project is for installing OpenNI, NITE, and sensor module with Homebrew.
+openni-formula is a project for installing [OpenNI](http://openni.org/), NITE, and Sensor module with [Homebrew](http://mxcl.github.com/homebrew/).
 
-This OpenNI formula depends on libusb-freenect.
-The default libusb installed with Homebrew is not working on OpenNI.
-libusb-freenect is for libfreenect library and works.
+You can install these packages in Homebrew installing directory (default: /usr/local) by simple commands.
+Uninstalling is also easy.
+This project does not provide only [Sensor](https://github.com/PrimeSense/Sensor) module (sensor.rb) for Xtion and Xtion PRO LIVE but also [SensorKinect](https://github.com/avin2/SensorKinect) module (sensor-kinect.rb) for Microsoft Kinect sensor.
+You can choose a proper module for your device.
+
+openni-formula depends on libusb-freenect.
+The default libusb that Homebrew installs is not proper to build OpenNI.
+libusb-freenect is for [libfreenect](https://github.com/OpenKinect/libfreenect) library and works.
 
 ## Versions
 
 * OpenNI
     * stable-1.5.2.23
-    * (devel option) unstable-1.5.2.23
+    * (--devel) unstable-1.5.2.23
 * Sensor
     * stable-5.1.0.41
-    * (devel option) unstable-5.1.0.41
+    * (--devel) unstable-5.1.0.41
 * SensorKinect
-	* unstable-5.1.0.25
+    * unstable-5.1.0.25
 * NITE
     * stable-1.5.2.21
-    * (devel option) unstable-1.5.2.21
+    * (--devel) unstable-1.5.2.21
 
 ## Usage
 
@@ -32,7 +37,7 @@ First, download related formulas:
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/nite.rb"
     $ curl --insecure -O "https://raw.github.com/OpenKinect/libfreenect/master/platform/osx/homebrew/libusb-freenect.rb"
 
-If you want to use Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb:
+If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb:
 
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor-kinect.rb"
 
@@ -61,7 +66,7 @@ Install Sensor.
     $ sudo mkdir -p /var/log/primesense/XnSensorServer
     $ sudo chmod a+w /var/log/primesense/XnSensorServer 
     
-(Or install SensorKinect instead if you want to use Kinect sensor.)
+(Or install SensorKinect instead if you want to use Microsoft Kinect sensor.)
 
 	$ brew install sensor-kinect
     
@@ -79,22 +84,19 @@ Install NITE.
     $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/etc/primesense/Hands_1_5_2
     
     $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
-    
+
+### Run sample for test
+
+Connect a device to the PC and run a sample program.
+
+    $ cd /usr/local/Cellar/openni/1.5.2.23/sample/Bin/x64-Release
+    $ ./Sample-NiSimpleViewer 
+
 ### Uninstall
-
-Unregister modules manually.
-
-	$ sudo niReg -u /usr/local/lib/libnimMockNodes.dylib
-    $ sudo niReg -u /usr/local/lib/libnimCodecs.dylib
-    $ sudo niReg -u /usr/local/lib/libnimRecorder.dylib
-    $ sudo niReg -u /usr/local/lib/libXnDeviceSensorV2.dylib /usr/local/etc/primesense
-    $ sudo niReg -u /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense
-    $ sudo niReg -u /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/etc/primesense/Features_1_5_2
-    $ sudo niReg -u /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/etc/primesense/Hands_1_5_2
 
 Uninstall OpenNI, Sensor (or SensorKinect), and NITE with Homebrew.
 
-	$ brew uninstall nite
+    $ brew uninstall nite
     $ brew uninstall sensor (or $ brew uninstall sensor-kinect)
     $ brew uninstall openni
 
