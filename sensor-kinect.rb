@@ -20,10 +20,12 @@ require 'formula'
 
 class SensorKinect < Formula
 
-  homepage 'https://github.com/totakke/openni-formula'
+  homepage 'https://github.com/avin2/SensorKinect/'
   url 'https://github.com/avin2/SensorKinect/tarball/v0.91-5.1.0.25'
   version 'stable-5.1.0.25'
   md5 '57ed1f44e9c67761bf167ba998cafbec'
+
+  head 'https://github.com/avin2/SensorKinect.git'
 
   @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.25'
 

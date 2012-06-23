@@ -19,10 +19,13 @@
 require 'formula'
 
 class Sensor < Formula
-  homepage 'https://github.com/totakke/openni-formula'
+
+  homepage 'http://www.openni.org/'
   url 'https://github.com/PrimeSense/Sensor/tarball/Stable-5.1.0.41'
   version 'stable-5.1.0.41'
   md5 'bed5b928d9299ee5580d12213f13ba41'
+
+  head 'https://github.com/PrimeSense/Sensor.git'
 
   @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.41'
 

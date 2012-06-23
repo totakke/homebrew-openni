@@ -20,7 +20,7 @@ require 'formula'
 
 class Nite < Formula
 
-  homepage 'https://github.com/totakke/openni-formula'
+  homepage 'http://www.openni.org/'
   url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
   version 'stable-1.5.2.21'
   md5 '619d9fe68e376e650b17e52c794bdc37'

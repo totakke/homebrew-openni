@@ -20,10 +20,12 @@ require 'formula'
 
 class Openni < Formula
 
-  homepage 'https://github.com/totakke/openni-formula'
+  homepage 'http://www.openni.org/'
   url 'https://github.com/OpenNI/OpenNI/tarball/Stable-1.5.2.23'
   version 'stable-1.5.2.23'
   md5 '12389c56bf3685a741f6bcfa068585ff'
+
+  head 'https://github.com/OpenNI/OpenNI.git'
 
   @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
 
