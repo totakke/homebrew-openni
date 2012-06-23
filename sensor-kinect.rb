@@ -21,28 +21,26 @@ require 'formula'
 class SensorKinect < Formula
 
   homepage 'https://github.com/totakke/openni-formula'
-  url 'https://github.com/avin2/SensorKinect/tarball/unstable'
-  version '5.1.0.25-unstable'
-  md5 '0635fffa182277bcdbec599c0fee950e'
+  url 'https://github.com/avin2/SensorKinect/tarball/v0.91-5.1.0.25'
+  version 'stable-5.1.0.25'
+  md5 '57ed1f44e9c67761bf167ba998cafbec'
 
   @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.25'
 
-=begin
   devel do
-    url 'https://github.com/avin2/SensorKinect/tarball/unstable'
-    version '5.1.0.25-unstable'
-    md5 '0635fffa182277bcdbec599c0fee950e'
+    url 'https://github.com/avin2/SensorKinect/tarball/v0.93-5.1.2.1'
+    version 'unstable-5.1.2.1'
+    md5 '533b2a65c46077fa8f1768f6a8e2f223'
 
-    @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.25'
+    @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.2.1'
   end
-=end
 
   depends_on 'openni'
 
   def install
 
     config_dir = "#{etc}/primesense"
-    
+
     cd 'Platform/Linux/CreateRedist'
 
     # Fix a bug in RedistMaker
@@ -92,5 +90,5 @@ class SensorKinect < Formula
     end
 
   end
-    
+
 end

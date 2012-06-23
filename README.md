@@ -15,12 +15,13 @@ libusb-freenect is for [libfreenect](https://github.com/OpenKinect/libfreenect) 
 
 * OpenNI
     * stable-1.5.2.23
-    * (--devel) unstable-1.5.2.23
+    * (--devel) unstable-1.5.4.0
 * Sensor
     * stable-5.1.0.41
-    * (--devel) unstable-5.1.0.41
+    * (--devel) unstable-5.1.2.1
 * SensorKinect
-    * unstable-5.1.0.25
+    * stable-5.1.0.25
+    * (--devel) unstable-5.1.2.1
 * NITE
     * stable-1.5.2.21
     * (--devel) unstable-1.5.2.21

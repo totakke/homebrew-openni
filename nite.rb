@@ -22,12 +22,12 @@ class Nite < Formula
 
   homepage 'https://github.com/totakke/openni-formula'
   url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
-  version '1.5.2.21'
+  version 'stable-1.5.2.21'
   md5 '619d9fe68e376e650b17e52c794bdc37'
 
   devel do
     url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
-    version '1.5.2.21-unstable'
+    version 'unstable-1.5.2.21'
     md5 '619d9fe68e376e650b17e52c794bdc37'
   end
 

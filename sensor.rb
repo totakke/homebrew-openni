@@ -21,17 +21,17 @@ require 'formula'
 class Sensor < Formula
   homepage 'https://github.com/totakke/openni-formula'
   url 'https://github.com/PrimeSense/Sensor/tarball/Stable-5.1.0.41'
-  version '5.1.0.41'
+  version 'stable-5.1.0.41'
   md5 'bed5b928d9299ee5580d12213f13ba41'
 
   @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.41'
 
   devel do
-    url 'https://github.com/PrimeSense/Sensor/tarball/Unstable-5.1.0.41'
-    version '5.1.0.41-unstable'
-    md5 '9c910f5230a8240e1cb00c0f60eaa7e9'
+    url 'https://github.com/PrimeSense/Sensor/tarball/Unstable-5.1.2.1'
+    version 'unstable-5.1.2.1'
+    md5 '7ab7582399bbab68b4e6e00871abef5d'
 
-    @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.41'
+    @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.2.1'
   end
 
   depends_on 'openni'
@@ -87,7 +87,7 @@ class Sensor < Formula
       ohai '  $ sudo mkdir -p /var/log/primesense/XnSensorServer'
       ohai '  $ sudo chmod a+w /var/log/primesense/XnSensorServer'
     end
-  
+
   end
 
 end

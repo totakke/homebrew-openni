@@ -22,22 +22,22 @@ class Openni < Formula
 
   homepage 'https://github.com/totakke/openni-formula'
   url 'https://github.com/OpenNI/OpenNI/tarball/Stable-1.5.2.23'
-  version '1.5.2.23'
+  version 'stable-1.5.2.23'
   md5 '12389c56bf3685a741f6bcfa068585ff'
 
   @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
 
   devel do
-    url 'https://github.com/OpenNI/OpenNI/tarball/Unstable-1.5.2.23'
-    version '1.5.2.23-unstable'
-    md5 '0a74f9f5a8ac9af1318347ca8dbdc50d'
+    url 'https://github.com/OpenNI/OpenNI/tarball/Unstable-1.5.4.0'
+    version 'unstable-1.5.4.0'
+    md5 '204594b8dc65e3c3acb86dd99ac18c56'
 
-    @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
+    @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.4.0'
   end
 
   depends_on 'libusb-freenect'
-  depends_on 'libtool'
-  depends_on 'automake'
+  depends_on 'libtool' => :build
+  depends_on 'automake' => :build
   depends_on 'doxygen'
 
   def install
@@ -97,7 +97,7 @@ class Openni < Formula
     ohai '  $ sudo niReg /usr/local/lib/libnimMockNodes.dylib'
     ohai '  $ sudo niReg /usr/local/lib/libnimCodecs.dylib'
     ohai '  $ sudo niReg /usr/local/lib/libnimRecorder.dylib'
-    
+
   end
 
 end
