@@ -20,14 +20,14 @@ require 'formula'
 
 class Nite < Formula
 
-  homepage 'https://github.com/totakke/openni-formula'
+  homepage 'http://www.openni.org/'
   url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
-  version '1.5.2.21'
+  version 'stable-1.5.2.21'
   md5 '619d9fe68e376e650b17e52c794bdc37'
 
   devel do
     url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
-    version '1.5.2.21-unstable'
+    version 'unstable-1.5.2.21'
     md5 '619d9fe68e376e650b17e52c794bdc37'
   end
 
@@ -107,8 +107,8 @@ class Nite < Formula
     if !File.exist?('/var/lib/ni') then
       ohai '  $ sudo mkdir -p /var/lib/ni'
     end
-    ohai '  $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/local/etc/primesense/Features_1_5_2'
-    ohai '  $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/local/etc/primesense/Hands_1_5_2'
+    ohai '  $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib %s/Features_1_5_2' % "#{etc}/primesense"
+    ohai '  $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib %s/Hands_1_5_2' % "#{etc}/primesense"
     ohai '  $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4='
 
   end
