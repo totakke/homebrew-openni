@@ -45,13 +45,8 @@ class SensorKinect < Formula
 
     cd 'Platform/Linux/CreateRedist'
 
-    # Fix a bug in RedistMaker
-    f = File.open('RedistMaker', 'r')
-    buffer = f.read();
-    buffer.gsub!('-j$(calc_jobs_number)', '-j 1');
-    f = File.open('RedistMaker', 'w')
-    f.write(buffer)
-    f.close()
+    # Fix RedistMaker
+    inreplace 'RedistMaker', 'echo $((N_CORES*2))', 'echo $((N_CORES))'
 
     # Build SnesorKinect
     chmod 0755, 'RedistMaker'
@@ -84,8 +79,8 @@ class SensorKinect < Formula
     if !File.exist?('/var/lib/ni') then
       ohai '  $ sudo mkdir -p /var/lib/ni'
     end
-    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceSensorV2KM.dylib /usr/local/etc/primesense'
-    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense'
+    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceSensorV2KM.dylib %s' % config_dir
+    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib %s' % config_dir
     if !File.exist?('/var/log/primesense/XnSensorServer') then
       ohai '  $ sudo mkdir -p /var/log/primesense/XnSensorServer'
       ohai '  $ sudo chmod a+w /var/log/primesense/XnSensorServer'
