@@ -30,7 +30,7 @@ libusb-freenect is for [libfreenect](https://github.com/OpenKinect/libfreenect) 
 
 ### Prepare
 
-First, download related formulas:
+First, download related formulas.
 
     $ cd /usr/local/Library/Formula
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/openni.rb"
@@ -38,7 +38,7 @@ First, download related formulas:
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/nite.rb"
     $ curl --insecure -O "https://raw.github.com/OpenKinect/libfreenect/master/platform/osx/homebrew/libusb-freenect.rb"
 
-If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb:
+If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb.
 
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor-kinect.rb"
 
@@ -81,8 +81,8 @@ Install NITE.
 
     $ brew install nite
     
-    $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/etc/primesense/Features_1_5_2
-    $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/etc/primesense/Hands_1_5_2
+    $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/local/etc/primesense/Features_1_5_2
+    $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/local/etc/primesense/Hands_1_5_2
     
     $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
 
@@ -90,7 +90,7 @@ Install NITE.
 
 Connect a device to the PC and run a sample program.
 
-    $ cd /usr/local/Cellar/openni/1.5.2.23/sample/Bin/x64-Release
+    $ cd /usr/local/Cellar/openni/stable-1.5.2.23/sample/Bin/x64-Release
     $ ./Sample-NiSimpleViewer 
 
 ### Uninstall
