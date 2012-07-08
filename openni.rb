@@ -27,14 +27,10 @@ class Openni < Formula
 
   head 'https://github.com/OpenNI/OpenNI.git'
 
-  @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.2.23'
-
   devel do
     url 'https://github.com/OpenNI/OpenNI/tarball/Unstable-1.5.4.0'
     version 'unstable-1.5.4.0'
     md5 '204594b8dc65e3c3acb86dd99ac18c56'
-
-    @@redist_dir_name = 'OpenNI-Bin-Dev-MacOSX-v1.5.4.0'
   end
 
   depends_on 'libusb-freenect'
@@ -50,7 +46,7 @@ class Openni < Formula
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
-    cd '../Redist/' + @@redist_dir_name
+    cd Dir.glob('../Redist/OpenNI-Bin-Dev-MacOSX-v*')[0]
 
     # Install bins
     bin.install Dir['Bin/ni*']

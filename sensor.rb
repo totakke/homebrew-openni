@@ -27,14 +27,10 @@ class Sensor < Formula
 
   head 'https://github.com/PrimeSense/Sensor.git'
 
-  @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.41'
-
   devel do
     url 'https://github.com/PrimeSense/Sensor/tarball/Unstable-5.1.2.1'
     version 'unstable-5.1.2.1'
     md5 '7ab7582399bbab68b4e6e00871abef5d'
-
-    @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.2.1'
   end
 
   depends_on 'openni'
@@ -52,7 +48,7 @@ class Sensor < Formula
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
-    cd '../Redist/' + @@redist_dir_name
+    cd Dir.glob('../Redist/Sensor-Bin-MacOSX-v*')[0]
 
     # Create config directory
     if !File.exist?(config_dir) then

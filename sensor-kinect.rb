@@ -27,14 +27,10 @@ class SensorKinect < Formula
 
   head 'https://github.com/avin2/SensorKinect.git'
 
-  @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.0.25'
-
   devel do
     url 'https://github.com/avin2/SensorKinect/tarball/v0.93-5.1.2.1'
     version 'unstable-5.1.2.1'
     md5 '533b2a65c46077fa8f1768f6a8e2f223'
-
-    @@redist_dir_name = 'Sensor-Bin-MacOSX-v5.1.2.1'
   end
 
   depends_on 'openni'
@@ -52,7 +48,7 @@ class SensorKinect < Formula
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
-    cd '../Redist/' + @@redist_dir_name
+    cd Dir.glob('../Redist/Sensor-Bin-MacOSX-v*')[0]
 
     # Create config directory
     if !File.exist?(config_dir) then
