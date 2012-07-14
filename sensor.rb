@@ -61,17 +61,16 @@ class Sensor < Formula
   end
 
   def caveats; <<-EOS.undent
-      After installation,
-        Create the directory '/var/lib/ni' if not exist:
-          $ sudo mkdir -p /var/lib/ni
+    After installation,
+      Create the directory '/var/lib/ni' if not exist:
+        $ sudo mkdir -p /var/lib/ni
 
-        Register the following libraries manually:
-          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceSensorV2.dylib #{etc}/primesense
-          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceFile.dylib #{etc}/primesense
+      Register the following libraries manually:
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceSensorV2.dylib #{etc}/primesense
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceFile.dylib #{etc}/primesense
 
-        Create the log directory '/var/log/primesense/XnSensorServer' if not exist:
-          $ sudo mkdir -p /var/log/primesense/XnSensorServer
-          $ sudo chmod a+w /var/log/primesense/XnSensorServer
+      Create the log directory '/var/log/primesense/XnSensorServer' if not exist:
+        $ sudo mkdir -m 777 -p /var/log/primesense/XnSensorServer
     EOS
   end
 

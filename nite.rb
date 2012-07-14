@@ -82,11 +82,7 @@ class Nite < Formula
       cd '..'
     end
 
-    # TODO: .NET
-
-    # Add license
-    # NOTE: require sudo
-#    system 'niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4='
+    # TODO: Install .NET
 
     # Run make
     if File.exist?('Makefile') then
@@ -103,18 +99,17 @@ class Nite < Formula
     doc.install Dir['Documentation']
   end
 
-  def caveats
-    <<-EOS.undent
-      After installation,
-        Create the directory '/var/lib/ni' if not exist:
-          $ sudo mkdir -p /var/lib/ni
+  def caveats; <<-EOS.undent
+    After installation,
+      Create the directory '/var/lib/ni' if not exist:
+        $ sudo mkdir -p /var/lib/ni
 
-        Register the following libraries manually:
-          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnVFeatures_1_5_2.dylib #{etc}/primesense/Features_1_5_2
-          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnVHandGenerator_1_5_2.dylib #{etc}/primesense/Hands_1_5_2
+      Register the following libraries manually:
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnVFeatures_1_5_2.dylib #{etc}/primesense/Features_1_5_2
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnVHandGenerator_1_5_2.dylib #{etc}/primesense/Hands_1_5_2
 
-        Register the PrimseSense license manually:
-          $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
+      Register the PrimseSense license manually:
+        $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
     EOS
   end
 

@@ -71,16 +71,15 @@ class Openni < Formula
     doc.install Dir['Documentation']
   end
 
-  def caveats
-    <<-EOS.undent
-      After installation,
-        Create the directory '/var/lib/ni' if not exist:
-          $ sudo mkdir -p /var/lib/ni
+  def caveats; <<-EOS.undent
+    After installation,
+      Create the directory '/var/lib/ni' if not exist:
+        $ sudo mkdir -p /var/lib/ni
 
-        Register the following libraries manually:
-          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimMockNodes.dylib
-          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimCodecs.dylib
-          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimRecorder.dylib
+      Register the following libraries manually:
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimMockNodes.dylib
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimCodecs.dylib
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimRecorder.dylib
     EOS
   end
 
