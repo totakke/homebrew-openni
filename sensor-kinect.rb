@@ -36,9 +36,6 @@ class SensorKinect < Formula
   depends_on 'openni'
 
   def install
-
-    config_dir = "#{etc}/primesense"
-
     cd 'Platform/Linux/CreateRedist'
 
     # Fix RedistMaker
@@ -50,38 +47,32 @@ class SensorKinect < Formula
 
     cd Dir.glob('../Redist/Sensor-Bin-MacOSX-v*')[0]
 
-    # Create config directory
-    if !File.exist?(config_dir) then
-      mkpath config_dir
-    end
-
     # Install bins
     bin.install Dir['Bin/*']
 
     # Install libs
     lib.install Dir['Lib/*']
 
-    # Register modules
-    # NOTE: Need to create /var/lib/ni direcotry for registering modules.
-    #       A user need to register them manually after installing.
-#    system "#{bin}/niReg -r #{lib}/libXnDeviceSensorV2.dylib #{etc}/primesense"
-#    system "#{bin}/niReg -r #{lib}/libXnDeviceFile.dylib #{etc}/primesense"
-
     # Copy config file
-    cp 'Config/GlobalDefaultsKinect.ini', config_dir
-
-    # Manual setup instruction
-    ohai 'Please setup manually:'
-    if !File.exist?('/var/lib/ni') then
-      ohai '  $ sudo mkdir -p /var/lib/ni'
+    if !File.exist?("#{etc}/primesense") then
+      mkpath "#{etc}/primesense"
     end
-    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceSensorV2KM.dylib %s' % config_dir
-    ohai '  $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib %s' % config_dir
-    if !File.exist?('/var/log/primesense/XnSensorServer') then
-      ohai '  $ sudo mkdir -p /var/log/primesense/XnSensorServer'
-      ohai '  $ sudo chmod a+w /var/log/primesense/XnSensorServer'
-    end
+    cp 'Config/GlobalDefaultsKinect.ini', "#{etc}/primesense"
+  end
 
+  def caveats; <<-EOS.undent
+      After installation,
+        Create the directory '/var/lib/ni' if not exist:
+          $ sudo mkdir -p /var/lib/ni
+
+        Register the following libraries manually:
+          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceSensorV2KM.dylib #{etc}/primesense
+          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceFile.dylib #{etc}/primesense
+
+        Create the log directory '/var/log/primesense/XnSensorServer' if not exist:
+          $ sudo mkdir -p /var/log/primesense/XnSensorServer
+          $ sudo chmod a+w /var/log/primesense/XnSensorServer
+    EOS
   end
 
 end

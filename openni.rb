@@ -57,23 +57,6 @@ class Openni < Formula
     # Install includes
     include.install Dir['Include/*']
 
-=begin
-    # NOTE: Need to create /var/lib/ni direcotry for registering modules.
-    #       A user need to register them manually after installing.
-    var.mkpath
-    if !File.exist?("#{var}/lib") then
-      mkdir "#{var}/lib"
-    end
-    ni_dir = "#{var}/lib/ni"
-    if !File.exist?(ni_dir) then
-      mkdir ni_dir
-    end
-    system "export DYLD_LIBRARY_PATH=#{lib}:$DYLD_LIBRARY_PATH"
-    system "Bin/niReg -r #{lib}/libnimMockNodes.dylib " + ni_dir
-    system "Bin/niReg -r #{lib}/libnimCodecs.dylib " + ni_dir
-    system "Bin/niReg -r #{lib}/libnimRecorder.dylib " + ni_dir
-=end
-
     # Install jar files
     jar_dir = "#{share}/java"
     mkpath jar_dir
@@ -86,16 +69,19 @@ class Openni < Formula
 
     # Install docs
     doc.install Dir['Documentation']
+  end
 
-    # Manual setup instruction
-    ohai 'Please setup manually:'
-    if !File.exist?('/var/lib/ni') then
-      ohai '  $ sudo mkdir -p /var/lib/ni'
-    end
-    ohai '  $ sudo niReg /usr/local/lib/libnimMockNodes.dylib'
-    ohai '  $ sudo niReg /usr/local/lib/libnimCodecs.dylib'
-    ohai '  $ sudo niReg /usr/local/lib/libnimRecorder.dylib'
+  def caveats
+    <<-EOS.undent
+      After installation,
+        Create the directory '/var/lib/ni' if not exist:
+          $ sudo mkdir -p /var/lib/ni
 
+        Register the following libraries manually:
+          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimMockNodes.dylib
+          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimCodecs.dylib
+          $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimRecorder.dylib
+    EOS
   end
 
 end
