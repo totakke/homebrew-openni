@@ -33,9 +33,9 @@ class Openni < Formula
     md5 '204594b8dc65e3c3acb86dd99ac18c56'
   end
 
-  depends_on 'libusb-freenect'
-  depends_on 'libtool' => :build
-  depends_on 'automake' => :build
+  depends_on :automake
+  depends_on :libtool
+  depends_on 'libusb'
   depends_on 'doxygen'
 
   def install
@@ -46,7 +46,8 @@ class Openni < Formula
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
-    cd Dir.glob('../Redist/OpenNI-Bin-Dev-MacOSX-v*')[0]
+    redist_dir = Dir.glob('../Redist/OpenNI-Bin-Dev-MacOSX-v*')[0]
+    cd redist_dir
 
     # Install bins
     bin.install Dir['Bin/ni*']
@@ -55,24 +56,8 @@ class Openni < Formula
     lib.install Dir['Lib/*']
 
     # Install includes
-    include.install Dir['Include/*']
-
-=begin
-    # NOTE: Need to create /var/lib/ni direcotry for registering modules.
-    #       A user need to register them manually after installing.
-    var.mkpath
-    if !File.exist?("#{var}/lib") then
-      mkdir "#{var}/lib"
-    end
-    ni_dir = "#{var}/lib/ni"
-    if !File.exist?(ni_dir) then
-      mkdir ni_dir
-    end
-    system "export DYLD_LIBRARY_PATH=#{lib}:$DYLD_LIBRARY_PATH"
-    system "Bin/niReg -r #{lib}/libnimMockNodes.dylib " + ni_dir
-    system "Bin/niReg -r #{lib}/libnimCodecs.dylib " + ni_dir
-    system "Bin/niReg -r #{lib}/libnimRecorder.dylib " + ni_dir
-=end
+    mkpath "#{include}/ni"
+    cp_r Dir['Include/*'], "#{include}/ni"
 
     # Install jar files
     jar_dir = "#{share}/java"
@@ -86,16 +71,22 @@ class Openni < Formula
 
     # Install docs
     doc.install Dir['Documentation']
+  end
 
-    # Manual setup instruction
-    ohai 'Please setup manually:'
-    if !File.exist?('/var/lib/ni') then
-      ohai '  $ sudo mkdir -p /var/lib/ni'
-    end
-    ohai '  $ sudo niReg /usr/local/lib/libnimMockNodes.dylib'
-    ohai '  $ sudo niReg /usr/local/lib/libnimCodecs.dylib'
-    ohai '  $ sudo niReg /usr/local/lib/libnimRecorder.dylib'
+  def caveats; <<-EOS.undent
+    Require libusb with option '--universal'.
+    If you have not installed it or failed to install OpenNI, install it by the following command:
+      $ brew install libusb --universal
 
+    After installation,
+      Create the directory '/var/lib/ni' if it is not exist:
+        $ sudo mkdir -p /var/lib/ni
+
+      Register the following libraries manually:
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimMockNodes.dylib
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimCodecs.dylib
+        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimRecorder.dylib
+    EOS
   end
 
 end
