@@ -43,20 +43,18 @@ class Nite < Formula
     lib.install Dir['Bin/libXnVNITE.jni*.dylib']
 
     # Install includes
-    include.install Dir['Include/*']
+    mkpath "#{include}/nite"
+    cp_r Dir['Include/*'], "#{include}/nite"
 
     # Install jar
-    jar_dir = "#{share}/java"
-    mkpath jar_dir
-    cp 'Bin/com.primesense.NITE.jar', jar_dir
+    mkpath "#{share}/java"
+    cp 'Bin/com.primesense.NITE.jar', "#{share}/java"
 
     # Install features modules
     Dir.glob('Features*').each do |fdir|
       cd fdir
       dst_fdir = "#{etc}/primesense/" + File.basename(fdir)
-      if !File.exist?(dst_fdir) then
-        mkpath dst_fdir
-      end
+      mkpath dst_fdir
       cp_r Dir['Data/*'], dst_fdir, {:remove_destination => true}
       Dir.glob('Bin/lib*.dylib').each do |dlib|
         lib.install dlib
@@ -72,9 +70,7 @@ class Nite < Formula
     Dir.glob('Hands*').each do |hdir|
       cd hdir
       dst_hdir = "#{etc}/primesense/" + File.basename(hdir)
-      if !File.exist?(dst_hdir) then
-        mkpath dst_hdir
-      end
+      mkpath dst_hdir
       cp_r Dir['Data/*'], dst_hdir, {:remove_destination => true}
       Dir.glob('Bin/lib*.dylib').each do |dlib|
         lib.install dlib
@@ -85,9 +81,7 @@ class Nite < Formula
     # TODO: Install .NET
 
     # Run make
-    if File.exist?('Makefile') then
-      system 'make'
-    end
+    system 'make' if File.exist?('Makefile')
 
     # Install samples
     sample_dir = "#{prefix}/sample"
@@ -101,7 +95,7 @@ class Nite < Formula
 
   def caveats; <<-EOS.undent
     After installation,
-      Create the directory '/var/lib/ni' if not exist:
+      Create the directory '/var/lib/ni' if it is not exist:
         $ sudo mkdir -p /var/lib/ni
 
       Register the following libraries manually:

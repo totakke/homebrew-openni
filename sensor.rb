@@ -36,16 +36,21 @@ class Sensor < Formula
   depends_on 'openni'
 
   def install
-    cd 'Platform/Linux/CreateRedist'
 
-    # Fix RedistMaker
-    inreplace 'RedistMaker', 'echo $((N_CORES*2))', 'echo $((N_CORES))'
+    cd 'Platform/Linux'
+
+    # Fix build files
+    inreplace 'Build/EngineLibMakefile', '/usr/include/ni', '/usr/local/include/ni'
+    inreplace 'Build/Utils/EngineUtilMakefile', '/usr/include/ni', '/usr/local/include/ni'
+    inreplace 'CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((N_CORES))'
 
     # Build Sensor
+    cd 'CreateRedist'
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
-    cd Dir.glob('../Redist/Sensor-Bin-MacOSX-v*')[0]
+    redist_dir = Dir.glob('../Redist/Sensor-Bin-MacOSX-v*')[0]
+    cd redist_dir
 
     # Install bins
     bin.install Dir['Bin/*']
@@ -54,15 +59,13 @@ class Sensor < Formula
     lib.install Dir['Lib/*']
 
     # Copy config file
-    if !File.exist?("#{etc}/primesense") then
-      mkpath "#{etc}/primesense"
-    end
+    mkpath "#{etc}/primesense"
     cp 'Config/GlobalDefaults.ini', "#{etc}/primesense"
   end
 
   def caveats; <<-EOS.undent
     After installation,
-      Create the directory '/var/lib/ni' if not exist:
+      Create the directory '/var/lib/ni' if it is not exist:
         $ sudo mkdir -p /var/lib/ni
 
       Register the following libraries manually:

@@ -46,7 +46,8 @@ class Openni < Formula
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
-    cd Dir.glob('../Redist/OpenNI-Bin-Dev-MacOSX-v*')[0]
+    redist_dir = Dir.glob('../Redist/OpenNI-Bin-Dev-MacOSX-v*')[0]
+    cd redist_dir
 
     # Install bins
     bin.install Dir['Bin/ni*']
@@ -55,7 +56,8 @@ class Openni < Formula
     lib.install Dir['Lib/*']
 
     # Install includes
-    include.install Dir['Include/*']
+    mkpath "#{include}/ni"
+    cp_r Dir['Include/*'], "#{include}/ni"
 
     # Install jar files
     jar_dir = "#{share}/java"
@@ -73,7 +75,7 @@ class Openni < Formula
 
   def caveats; <<-EOS.undent
     Require libusb with option '--universal'.
-    If you have not installed it, install it by a following command:
+    If you have not installed it or failed to install OpenNI, install it by the following command:
       $ brew install libusb --universal
 
     After installation,
