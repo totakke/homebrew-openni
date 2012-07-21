@@ -7,10 +7,6 @@ Uninstalling is also easy.
 This project does not provide only [Sensor](https://github.com/PrimeSense/Sensor) module (sensor.rb) for Xtion and Xtion PRO LIVE but also [SensorKinect](https://github.com/avin2/SensorKinect) module (sensor-kinect.rb) for Microsoft Kinect sensor.
 You can choose a proper module for your device.
 
-openni-formula depends on libusb-freenect.
-The default libusb that Homebrew installs is not proper to build OpenNI.
-libusb-freenect is for [libfreenect](https://github.com/OpenKinect/libfreenect) library and works.
-
 ## Versions
 
 * OpenNI
@@ -36,7 +32,6 @@ First, download related formulas.
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/openni.rb"
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor.rb"
     $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/nite.rb"
-    $ curl --insecure -O "https://raw.github.com/OpenKinect/libfreenect/master/platform/osx/homebrew/libusb-freenect.rb"
 
 If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb.
 
@@ -47,6 +42,10 @@ If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.r
 Install OpenNI, Sensor/SensorKinect, and NITE with Homebrew.
 If you want to install unstable release, add option "--devel". 
 After each Homebrew installations, you have to register modules and license, and create XnSensorServer directory manually.
+
+First of all, install libusb with option "--universal".
+
+    $ brew install libusb --universal
 
 Install OpenNI.
 
