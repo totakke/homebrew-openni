@@ -33,9 +33,9 @@ class Openni < Formula
     md5 '204594b8dc65e3c3acb86dd99ac18c56'
   end
 
-  depends_on 'libusb-freenect'
-  depends_on 'libtool' => :build
-  depends_on 'automake' => :build
+  depends_on :automake
+  depends_on :libtool
+  depends_on 'libusb'
   depends_on 'doxygen'
 
   def install
@@ -72,8 +72,12 @@ class Openni < Formula
   end
 
   def caveats; <<-EOS.undent
+    Require libusb with option '--universal'.
+    If you have not installed it, install it by a following command:
+      $ brew install libusb --universal
+
     After installation,
-      Create the directory '/var/lib/ni' if not exist:
+      Create the directory '/var/lib/ni' if it is not exist:
         $ sudo mkdir -p /var/lib/ni
 
       Register the following libraries manually:
