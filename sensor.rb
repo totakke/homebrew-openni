@@ -40,8 +40,8 @@ class Sensor < Formula
     cd 'Platform/Linux'
 
     # Fix build files
-    inreplace 'Build/EngineLibMakefile', '/usr/include/ni', '/usr/local/include/ni'
-    inreplace 'Build/Utils/EngineUtilMakefile', '/usr/include/ni', '/usr/local/include/ni'
+    inreplace 'Build/EngineLibMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
+    inreplace 'Build/Utils/EngineUtilMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
     inreplace 'CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((N_CORES))'
 
     # Build Sensor
