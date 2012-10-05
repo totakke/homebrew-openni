@@ -42,7 +42,7 @@ class SensorKinect < Formula
     # Fix build files
     inreplace 'Build/EngineLibMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
     inreplace 'Build/Utils/EngineUtilMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
-    inreplace 'CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((N_CORES))'
+    inreplace 'CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((2))'
 
     # Build SensorKinect
     cd 'CreateRedist'
