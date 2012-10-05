@@ -37,15 +37,14 @@ class Sensor < Formula
 
   def install
 
-    cd 'Platform/Linux'
-
     # Fix build files
-    inreplace 'Build/EngineLibMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
-    inreplace 'Build/Utils/EngineUtilMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
-    inreplace 'CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((2))'
+    inreplace 'Source/Utils/XnSensorServer/SensorServer.cpp', "/var/log/primesense/XnSensorServer/", "#{var}/log/primesense/XnSensorServer/"
+    inreplace 'Platform/Linux/Build/EngineLibMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
+    inreplace 'Platform/Linux/Build/Utils/EngineUtilMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
+    inreplace 'Platform/Linux/CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((2))'
 
     # Build Sensor
-    cd 'CreateRedist'
+    cd 'Platform/Linux/CreateRedist'
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
@@ -61,20 +60,13 @@ class Sensor < Formula
     # Copy config file
     mkpath "#{etc}/primesense"
     cp 'Config/GlobalDefaults.ini', "#{etc}/primesense"
-  end
 
-  def caveats; <<-EOS.undent
-    After installation,
-      Create the directory '/var/lib/ni' if it is not exist:
-        $ sudo mkdir -p /var/lib/ni
+    # niReg
+    system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnDeviceSensorV2.dylib #{etc}/primesense"
+    system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnDeviceFile.dylib #{etc}/primesense"
 
-      Register the following libraries manually:
-        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceSensorV2.dylib #{etc}/primesense
-        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnDeviceFile.dylib #{etc}/primesense
-
-      Create the log directory '/var/log/primesense/XnSensorServer' if not exist:
-        $ sudo mkdir -m 777 -p /var/log/primesense/XnSensorServer
-    EOS
+    # Create log directory
+    mkpath "#{var}/log/primesense/XnSensorServer"
   end
 
 end
