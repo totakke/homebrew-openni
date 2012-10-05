@@ -41,49 +41,24 @@ If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.r
 
 Install OpenNI, Sensor/SensorKinect, and NITE with Homebrew.
 If you want to install unstable release, add option "--devel". 
-After each Homebrew installations, you have to register modules and license, and create XnSensorServer directory manually.
 
 First of all, install libusb with option "--universal".
 
     $ brew install libusb --universal
 
-Install OpenNI.
+Install openni-formula.
 
+    Install OpenNI.
     $ brew install openni
-    
-    $ sudo mkdir -p /var/lib/ni
-    $ sudo niReg /usr/local/lib/libnimMockNodes.dylib
-    $ sudo niReg /usr/local/lib/libnimCodecs.dylib
-    $ sudo niReg /usr/local/lib/libnimRecorder.dylib
 
-Install Sensor.
-
+    Install Sensor.
     $ brew install sensor
     
-    $ sudo niReg /usr/local/lib/libXnDeviceSensorV2.dylib /usr/local/etc/primesense
-    $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense
+    (Or install SensorKinect instead if you want to use Microsoft Kinect sensor.)
+    ($ brew install sensor-kinect)
     
-    $ sudo mkdir -p /var/log/primesense/XnSensorServer
-    $ sudo chmod a+w /var/log/primesense/XnSensorServer 
-    
-(Or install SensorKinect instead if you want to use Microsoft Kinect sensor.)
-
-	$ brew install sensor-kinect
-    
-    $ sudo niReg /usr/local/lib/libXnDeviceSensorV2KM.dylib /usr/local/etc/primesense
-    $ sudo niReg /usr/local/lib/libXnDeviceFile.dylib /usr/local/etc/primesense
-
-    $ sudo mkdir -p /var/log/primesense/XnSensorServer
-    $ sudo chmod a+w /var/log/primesense/XnSensorServer  
-    
-Install NITE.
-
+    Install NITE.
     $ brew install nite
-    
-    $ sudo niReg /usr/local/lib/libXnVFeatures_1_5_2.dylib /usr/local/etc/primesense/Features_1_5_2
-    $ sudo niReg /usr/local/lib/libXnVHandGenerator_1_5_2.dylib /usr/local/etc/primesense/Hands_1_5_2
-    
-    $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
 
 ### Run sample for test
 
@@ -102,7 +77,7 @@ Uninstall OpenNI, Sensor (or SensorKinect), and NITE with Homebrew.
 
 If you want to clean entirely,
 
-    $ sudo rm -rf /var/lib/ni /var/log/primesense/XnSensorServer /usr/local/etc/primesense
+    $ sudo rm -rf /usr/local/var/lib/ni /usr/local/var/log/primesense/XnSensorServer /usr/local/etc/primesense
 
 ## License
 
