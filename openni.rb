@@ -40,9 +40,11 @@ class Openni < Formula
 
   def install
 
-    cd 'Platform/Linux/CreateRedist'
+    # Fix build files
+    inreplace 'Source/OpenNI/XnOpenNI.cpp', '/var/lib/ni/', "#{var}/lib/ni/"
 
     # Build OpenNI
+    cd 'Platform/Linux/CreateRedist'
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
@@ -71,21 +73,17 @@ class Openni < Formula
 
     # Install docs
     doc.install Dir['Documentation']
+
+    mkpath "#{var}/lib/ni"
+    system "#{bin}/niReg #{lib}/libnimMockNodes.dylib"
+    system "#{bin}/niReg #{lib}/libnimCodecs.dylib"
+    system "#{bin}/niReg #{lib}/libnimRecorder.dylib"
   end
 
   def caveats; <<-EOS.undent
-    Require libusb with option '--universal'.
+    Requires libusb with option '--universal'.
     If you have not installed it or failed to install OpenNI, install it by the following command:
       $ brew install libusb --universal
-
-    After installation,
-      Create the directory '/var/lib/ni' if it is not exist:
-        $ sudo mkdir -p /var/lib/ni
-
-      Register the following libraries manually:
-        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimMockNodes.dylib
-        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimCodecs.dylib
-        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libnimRecorder.dylib
     EOS
   end
 

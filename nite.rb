@@ -91,20 +91,13 @@ class Nite < Formula
 
     # Install docs
     doc.install Dir['Documentation']
-  end
 
-  def caveats; <<-EOS.undent
-    After installation,
-      Create the directory '/var/lib/ni' if it is not exist:
-        $ sudo mkdir -p /var/lib/ni
+    # niReg
+    system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnVFeatures_1_5_2.dylib #{etc}/primesense/Features_1_5_2"
+    system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnVHandGenerator_1_5_2.dylib #{etc}/primesense/Hands_1_5_2"
 
-      Register the following libraries manually:
-        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnVFeatures_1_5_2.dylib #{etc}/primesense/Features_1_5_2
-        $ sudo niReg #{HOMEBREW_PREFIX}/lib/libXnVHandGenerator_1_5_2.dylib #{etc}/primesense/Hands_1_5_2
-
-      Register the PrimseSense license manually:
-        $ sudo niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
-    EOS
+    # niLicense
+    system "#{HOMEBREW_PREFIX}/bin/niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4="
   end
 
 end
