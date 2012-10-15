@@ -67,6 +67,7 @@ class SensorKinect < Formula
 
     # Create log directory
     mkpath "#{var}/log/primesense/XnSensorServer"
+    chmod 0777, "#{var}/log/primesense/XnSensorServer"
   end
 
 end
