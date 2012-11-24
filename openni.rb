@@ -42,6 +42,7 @@ class Openni < Formula
 
     # Fix build files
     inreplace 'Source/OpenNI/XnOpenNI.cpp', '/var/lib/ni/', "#{var}/lib/ni/"
+    inreplace 'Platform/Linux/Build/Common/CommonJavaMakefile', '/usr/share/java', "#{share}/java"
 
     # Build OpenNI
     cd 'Platform/Linux/CreateRedist'

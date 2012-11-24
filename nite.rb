@@ -37,6 +37,9 @@ class Nite < Formula
 
     ohai 'Installing...'
 
+    inreplace 'Samples/Boxes.java/Manifest.txt', '/usr/share/java', "#{share}/java"
+    inreplace 'Samples/Build/Common/CommonJavaMakefile', '/usr/share/java', "#{share}/java"
+
     # Install libs
     lib.install Dir['Bin/libXnVNite*.dylib']
     lib.install Dir['Bin/libXnVCNITE*.dylib']
