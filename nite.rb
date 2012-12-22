@@ -21,15 +21,9 @@ require 'formula'
 class Nite < Formula
 
   homepage 'http://www.openni.org/'
-  url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
+  url 'http://www.kinect-wiki.info/Download?action=AttachFile&do=get&target=nite-bin-macosx-v1.5.2.21.tar.bz2'
   version 'stable-1.5.2.21'
   md5 '619d9fe68e376e650b17e52c794bdc37'
-
-  devel do
-    url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
-    version 'unstable-1.5.2.21'
-    md5 '619d9fe68e376e650b17e52c794bdc37'
-  end
 
   depends_on 'openni'
 
