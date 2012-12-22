@@ -20,7 +20,6 @@ You can choose a proper module for your device.
     * (--devel) unstable-5.1.2.1
 * NITE
     * stable-1.5.2.21
-    * (--devel) unstable-1.5.2.21
 
 ## Usage
 
