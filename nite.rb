@@ -21,13 +21,16 @@ require 'formula'
 class Nite < Formula
 
   homepage 'http://www.openni.org/'
-  url 'http://www.kinect-wiki.info/Download?action=AttachFile&do=get&target=nite-bin-macosx-v1.5.2.21.tar.bz2'
+  url 'http://www.openni.org/wp-content/uploads/2012/12/NITE-Bin-MacOSX-v1.5.2.21.tar.zip'
   version 'stable-1.5.2.21'
-  md5 '619d9fe68e376e650b17e52c794bdc37'
+  md5 'f61c2fc1f63658cf44b0207341391d57'
 
   depends_on 'openni'
 
   def install
+
+    system 'tar zxvf NITE-Bin-MacOSX-v1.5.2.21.tar.bz2'
+    cd 'NITE-Bin-Dev-MacOSX-v1.5.2.21'
 
     ohai 'Installing...'
 
