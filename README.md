@@ -20,7 +20,6 @@ You can choose a proper module for your device.
     * (--devel) unstable-5.1.2.1
 * NITE
     * stable-1.5.2.21
-    * (--devel) unstable-1.5.2.21
 
 ## Usage
 
@@ -29,9 +28,9 @@ You can choose a proper module for your device.
 First, download related formulas.
 
     $ cd /usr/local/Library/Formula
-    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/openni.rb"
-    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor.rb"
-    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/nite.rb"
+    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/require-sudo/openni.rb"
+    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/require-sudo/sensor.rb"
+    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/require-sudo/nite.rb"
 
 If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb.
 
