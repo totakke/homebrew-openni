@@ -23,14 +23,14 @@ class Sensor < Formula
   homepage 'http://www.openni.org/'
   url 'https://github.com/PrimeSense/Sensor/tarball/Stable-5.1.0.41'
   version 'stable-5.1.0.41'
-  md5 'bed5b928d9299ee5580d12213f13ba41'
+  sha1 'e7f0392d5e4b9270867d1c07019976dc20052a2c'
 
   head 'https://github.com/PrimeSense/Sensor.git'
 
   devel do
     url 'https://github.com/PrimeSense/Sensor/tarball/Unstable-5.1.2.1'
     version 'unstable-5.1.2.1'
-    md5 '7ab7582399bbab68b4e6e00871abef5d'
+    sha1 '38df8508d728324cbcbf3ed158222687e124f808'
   end
 
   depends_on 'openni'

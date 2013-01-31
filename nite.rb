@@ -21,19 +21,16 @@ require 'formula'
 class Nite < Formula
 
   homepage 'http://www.openni.org/'
-  url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
+  url 'http://www.openni.org/wp-content/uploads/2012/12/NITE-Bin-MacOSX-v1.5.2.21.tar.zip'
   version 'stable-1.5.2.21'
-  md5 '619d9fe68e376e650b17e52c794bdc37'
-
-  devel do
-    url 'http://www.openni.org/downloads/nite-bin-macosx-v1.5.2.21.tar.bz2'
-    version 'unstable-1.5.2.21'
-    md5 '619d9fe68e376e650b17e52c794bdc37'
-  end
+  sha1 '9dad7d093e02cf2edc50ac5e61f224eb07ba7c7e'
 
   depends_on 'openni'
 
   def install
+
+    system 'tar zxvf NITE-Bin-MacOSX-v1.5.2.21.tar.bz2'
+    cd 'NITE-Bin-Dev-MacOSX-v1.5.2.21'
 
     ohai 'Installing...'
 

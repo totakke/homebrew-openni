@@ -23,14 +23,14 @@ class SensorKinect < Formula
   homepage 'https://github.com/avin2/SensorKinect/'
   url 'https://github.com/avin2/SensorKinect/tarball/v0.91-5.1.0.25'
   version 'stable-5.1.0.25'
-  md5 '57ed1f44e9c67761bf167ba998cafbec'
+  sha1 'e262f6470339ce5e90e6ce28ecce3e98b15a3433'
 
   head 'https://github.com/avin2/SensorKinect.git'
 
   devel do
     url 'https://github.com/avin2/SensorKinect/tarball/v0.93-5.1.2.1'
     version 'unstable-5.1.2.1'
-    md5 '533b2a65c46077fa8f1768f6a8e2f223'
+    sha1 'ce08495934d232416ff1cd6cd53992f01e98a542'
   end
 
   depends_on 'openni'

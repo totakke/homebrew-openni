@@ -23,14 +23,14 @@ class Openni < Formula
   homepage 'http://www.openni.org/'
   url 'https://github.com/OpenNI/OpenNI/tarball/Stable-1.5.2.23'
   version 'stable-1.5.2.23'
-  md5 '12389c56bf3685a741f6bcfa068585ff'
+  sha1 'df8998be4e20664f11c7894bca0a2697815ef4b4'
 
   head 'https://github.com/OpenNI/OpenNI.git'
 
   devel do
     url 'https://github.com/OpenNI/OpenNI/tarball/Unstable-1.5.4.0'
     version 'unstable-1.5.4.0'
-    md5 '204594b8dc65e3c3acb86dd99ac18c56'
+    sha1 '73bcfd47af26d615247db2f0e632e651d33834f'
   end
 
   depends_on :automake
