@@ -23,7 +23,7 @@ class Nite < Formula
   homepage 'http://www.openni.org/'
   url 'http://www.openni.org/wp-content/uploads/2012/12/NITE-Bin-MacOSX-v1.5.2.21.tar.zip'
   version 'stable-1.5.2.21'
-  md5 'f61c2fc1f63658cf44b0207341391d57'
+  sha1 '9dad7d093e02cf2edc50ac5e61f224eb07ba7c7e'
 
   depends_on 'openni'
 
