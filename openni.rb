@@ -30,7 +30,7 @@ class Openni < Formula
   devel do
     url 'https://github.com/OpenNI/OpenNI/tarball/Unstable-1.5.4.0'
     version 'unstable-1.5.4.0'
-    sha1 '73bcfd47af26d615247db2f0e632e651d33834f'
+    sha1 '873bcfd47af26d615247db2f0e632e651d33834f'
   end
 
   depends_on :automake
