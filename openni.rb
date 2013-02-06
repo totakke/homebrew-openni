@@ -1,6 +1,6 @@
 #
 #   openni-formula
-#   https://github.com/totakke/openni-formula
+#   http://github.com/totakke/openni-formula
 #   Copyright (C) 2012, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,8 +35,8 @@ class Openni < Formula
 
   depends_on :automake
   depends_on :libtool
-  depends_on 'libusb'
-  depends_on 'doxygen'
+  depends_on 'libusb' => 'universal'
+  depends_on 'doxygen' => :build
 
   def install
 
@@ -79,13 +79,6 @@ class Openni < Formula
     system "#{bin}/niReg #{lib}/libnimMockNodes.dylib"
     system "#{bin}/niReg #{lib}/libnimCodecs.dylib"
     system "#{bin}/niReg #{lib}/libnimRecorder.dylib"
-  end
-
-  def caveats; <<-EOS.undent
-    Requires libusb with option '--universal'.
-    If you have not installed it or failed to install OpenNI, install it by the following command:
-      $ brew install libusb --universal
-    EOS
   end
 
 end

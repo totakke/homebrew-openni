@@ -1,6 +1,6 @@
 #
 #   openni-formula
-#   https://github.com/totakke/openni-formula
+#   http://github.com/totakke/openni-formula
 #   Copyright (C) 2012, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

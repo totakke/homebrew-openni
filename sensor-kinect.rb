@@ -1,6 +1,6 @@
 #
 #   openni-formula
-#   https://github.com/totakke/openni-formula
+#   http://github.com/totakke/openni-formula
 #   Copyright (C) 2012, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ require 'formula'
 
 class SensorKinect < Formula
 
-  homepage 'https://github.com/avin2/SensorKinect/'
+  homepage 'http://github.com/avin2/SensorKinect/'
   url 'https://github.com/avin2/SensorKinect/tarball/v0.91-5.1.0.25'
   version 'stable-5.1.0.25'
   sha1 'e262f6470339ce5e90e6ce28ecce3e98b15a3433'
