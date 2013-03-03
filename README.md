@@ -23,29 +23,16 @@ You can choose a proper module for your device.
 
 ## Usage
 
-### Prepare
+### Download formulas
 
-First, download related formulas.
+First, tap homebrew-openni.
 
-    $ cd /usr/local/Library/Formula
-    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/openni.rb"
-    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor.rb"
-    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/nite.rb"
-
-If you want to use Microsoft Kinect sensor (not Xtion), download sensor-kinect.rb instead of sensor.rb.
-
-    $ curl --insecure -O "https://raw.github.com/totakke/openni-formula/master/sensor-kinect.rb"
+    $ brew tap totakke/openni
 
 ### Install
 
 Install OpenNI, Sensor/SensorKinect, and NITE with Homebrew.
-If you want to install unstable release, add option "--devel". 
-
-First of all, install libusb with option "--universal".
-
-    $ brew install libusb --universal
-
-Install openni-formula.
+If you want to install unstable release, add `--devel` option. 
 
     Install OpenNI.
     $ brew install openni
@@ -77,6 +64,13 @@ Uninstall OpenNI, Sensor (or SensorKinect), and NITE with Homebrew.
 If you want to clean entirely,
 
     $ sudo rm -rf /usr/local/var/lib/ni /usr/local/var/log/primesense/XnSensorServer /usr/local/etc/primesense
+
+## Note
+
+If you fail to install OpenNI, uninstall `libusb` and install OpenNI again.
+
+    $ brew uninstall libusb
+    $ brew install openni
 
 ## License
 
