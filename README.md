@@ -1,6 +1,6 @@
-# openni-formula
+# homebrew-openni
 
-openni-formula is a project for installing [OpenNI](http://openni.org/), NITE, and Sensor module with [Homebrew](http://mxcl.github.com/homebrew/).
+homebrew-openni is a project for installing [OpenNI](http://openni.org/), NITE, and Sensor module with [Homebrew](http://mxcl.github.com/homebrew/).
 
 You can install these packages in Homebrew installing directory (default: /usr/local) by simple commands.
 Uninstalling is also easy.
@@ -32,17 +32,17 @@ First, tap homebrew-openni.
 ### Install
 
 Install OpenNI, Sensor/SensorKinect, and NITE with Homebrew.
-If you want to install unstable release, add `--devel` option. 
+If you want to install unstable release, add `--devel` option.
 
     Install OpenNI.
     $ brew install openni
 
     Install Sensor.
     $ brew install sensor
-    
+
     (Or install SensorKinect instead if you want to use Microsoft Kinect sensor.)
     ($ brew install sensor-kinect)
-    
+
     Install NITE.
     $ brew install nite
 
@@ -50,8 +50,8 @@ If you want to install unstable release, add `--devel` option.
 
 Connect a device to the PC and run a sample program.
 
-    $ cd /usr/local/Cellar/openni/stable-1.5.2.23/sample/Bin/x64-Release
-    $ ./Sample-NiSimpleViewer 
+    $ cd `brew --cellar openni`/stable-1.5.2.23/sample/Bin/x64-Release
+    $ ./Sample-NiSimpleViewer
 
 ### Uninstall
 
@@ -63,7 +63,8 @@ Uninstall OpenNI, Sensor (or SensorKinect), and NITE with Homebrew.
 
 If you want to clean entirely,
 
-    $ sudo rm -rf /usr/local/var/lib/ni /usr/local/var/log/primesense/XnSensorServer /usr/local/etc/primesense
+    $ cd `brew --prefix`
+    $ rm -rf var/lib/ni var/log/primesense/XnSensorServer etc/primesense
 
 ## Note
 
