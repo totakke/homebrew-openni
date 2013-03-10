@@ -29,6 +29,8 @@ class Nite < Formula
 
   def install
 
+    ENV.universal_binary if ARGV.build_universal?
+
     system 'tar zxvf NITE-Bin-MacOSX-v1.5.2.21.tar.bz2'
     cd 'NITE-Bin-Dev-MacOSX-v1.5.2.21'
 

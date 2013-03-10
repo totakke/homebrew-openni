@@ -37,6 +37,8 @@ class Sensor < Formula
 
   def install
 
+    ENV.universal_binary if ARGV.build_universal?
+
     # Fix build files
     inreplace 'Source/Utils/XnSensorServer/SensorServer.cpp', "/var/log/primesense/XnSensorServer/", "#{var}/log/primesense/XnSensorServer/"
     inreplace 'Platform/Linux/Build/EngineLibMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"

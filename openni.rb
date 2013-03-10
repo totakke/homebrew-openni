@@ -40,6 +40,8 @@ class Openni < Formula
 
   def install
 
+    ENV.universal_binary if ARGV.build_universal?
+
     # Fix build files
     inreplace 'Source/OpenNI/XnOpenNI.cpp', '/var/lib/ni/', "#{var}/lib/ni/"
     inreplace 'Platform/Linux/Build/Common/CommonJavaMakefile', '/usr/share/java', "#{share}/java"
