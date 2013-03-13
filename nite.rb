@@ -27,9 +27,11 @@ class Nite < Formula
 
   depends_on 'openni'
 
+  option :universal
+
   def install
 
-    ENV.universal_binary if ARGV.build_universal?
+    ENV.universal_binary if build.universal?
 
     system 'tar zxvf NITE-Bin-MacOSX-v1.5.2.21.tar.bz2'
     cd 'NITE-Bin-Dev-MacOSX-v1.5.2.21'

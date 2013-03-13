@@ -38,9 +38,11 @@ class Openni < Formula
   depends_on 'libusb' => 'universal'
   depends_on 'doxygen' => :build
 
+  option :universal
+
   def install
 
-    ENV.universal_binary if ARGV.build_universal?
+    ENV.universal_binary if build.universal?
 
     # Fix build files
     inreplace 'Source/OpenNI/XnOpenNI.cpp', '/var/lib/ni/', "#{var}/lib/ni/"

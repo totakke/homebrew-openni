@@ -35,9 +35,11 @@ class SensorKinect < Formula
 
   depends_on 'openni'
 
+  option :universal
+
   def install
 
-    ENV.universal_binary if ARGV.build_universal?
+    ENV.universal_binary if build.universal?
 
     # Fix build files
     inreplace 'Source/Utils/XnSensorServer/SensorServer.cpp', "/var/log/primesense/XnSensorServer/", "#{var}/log/primesense/XnSensorServer/"
