@@ -1,7 +1,7 @@
 #
-#   openni-formula
-#   http://github.com/totakke/openni-formula
-#   Copyright (C) 2012, Toshiki TAKEUCHI.
+#   homebrew-openni
+#   http://github.com/totakke/homebrew-openni
+#   Copyright (C) 2012-2013, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
