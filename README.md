@@ -16,10 +16,10 @@ You can choose a proper module for your device.
     * stable-5.1.0.41
     * (--devel) unstable-5.1.2.1
 * SensorKinect
-    * stable-5.1.0.25
-    * (--devel) unstable-5.1.2.1
+    * 0.91-5.1.0.25
+    * (--devel) 0.93-5.1.2.1
 * NITE
-    * stable-1.5.2.21
+    * 1.5.2.21
 
 ## Usage
 
@@ -32,17 +32,17 @@ First, tap homebrew-openni.
 ### Install
 
 Install OpenNI, Sensor/SensorKinect, and NITE with Homebrew.
-If you want to install unstable release, add `--devel` option. 
+If you want to install unstable release, add `--devel` option.
 
     Install OpenNI.
     $ brew install openni
 
     Install Sensor.
     $ brew install sensor
-    
+
     (Or install SensorKinect instead if you want to use Microsoft Kinect sensor.)
     ($ brew install sensor-kinect)
-    
+
     Install NITE.
     $ brew install nite
 
@@ -51,7 +51,7 @@ If you want to install unstable release, add `--devel` option.
 Connect a device to the PC and run a sample program.
 
     $ cd /usr/local/Cellar/openni/stable-1.5.2.23/sample/Bin/x64-Release
-    $ ./Sample-NiSimpleViewer 
+    $ ./Sample-NiSimpleViewer
 
 ### Uninstall
 
