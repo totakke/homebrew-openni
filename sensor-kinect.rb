@@ -1,7 +1,7 @@
 #
-#   openni-formula
-#   http://github.com/totakke/openni-formula
-#   Copyright (C) 2012, Toshiki TAKEUCHI.
+#   homebrew-openni
+#   http://github.com/totakke/homebrew-openni
+#   Copyright (C) 2012-2013, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,22 +20,26 @@ require 'formula'
 
 class SensorKinect < Formula
 
-  homepage 'http://github.com/avin2/SensorKinect/'
-  url 'https://github.com/avin2/SensorKinect/tarball/v0.91-5.1.0.25'
-  version 'stable-5.1.0.25'
-  sha1 'e262f6470339ce5e90e6ce28ecce3e98b15a3433'
+  homepage 'https://github.com/avin2/SensorKinect/'
+  url 'https://github.com/avin2/SensorKinect/archive/v0.91-5.1.0.25.tar.gz'
+  version '0.91-5.1.0.25'
+  sha1 'ca50ff27d706a92f71063154e8353efe0bf1eba2'
 
   head 'https://github.com/avin2/SensorKinect.git'
 
   devel do
-    url 'https://github.com/avin2/SensorKinect/tarball/v0.93-5.1.2.1'
-    version 'unstable-5.1.2.1'
-    sha1 'ce08495934d232416ff1cd6cd53992f01e98a542'
+    url 'https://github.com/avin2/SensorKinect/archive/v0.93-5.1.2.1.tar.gz'
+    version '0.93-5.1.2.1'
+    sha1 'd34f49da4edf8c5febc93a4c95c13d2bee73048e'
   end
 
   depends_on 'openni'
 
+  option :universal
+
   def install
+
+    ENV.universal_binary if build.universal?
 
     # Fix build files
     inreplace 'Source/Utils/XnSensorServer/SensorServer.cpp', "/var/log/primesense/XnSensorServer/", "#{var}/log/primesense/XnSensorServer/"

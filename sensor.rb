@@ -1,7 +1,7 @@
 #
-#   openni-formula
-#   http://github.com/totakke/openni-formula
-#   Copyright (C) 2012, Toshiki TAKEUCHI.
+#   homebrew-openni
+#   http://github.com/totakke/homebrew-openni
+#   Copyright (C) 2012-2013, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,21 +21,25 @@ require 'formula'
 class Sensor < Formula
 
   homepage 'http://www.openni.org/'
-  url 'https://github.com/PrimeSense/Sensor/tarball/Stable-5.1.0.41'
+  url 'https://github.com/PrimeSense/Sensor/archive/Stable-5.1.0.41.tar.gz'
   version 'stable-5.1.0.41'
-  sha1 'e7f0392d5e4b9270867d1c07019976dc20052a2c'
+  sha1 '04ec8fcae2c9d8f02c20238a071db1cabe0aeac7'
 
   head 'https://github.com/PrimeSense/Sensor.git'
 
   devel do
-    url 'https://github.com/PrimeSense/Sensor/tarball/Unstable-5.1.2.1'
+    url 'https://github.com/PrimeSense/Sensor/archive/Unstable-5.1.2.1.tar.gz'
     version 'unstable-5.1.2.1'
-    sha1 '38df8508d728324cbcbf3ed158222687e124f808'
+    sha1 '72b933ea48afe6216c2e9301fa023e1daac649d3'
   end
 
   depends_on 'openni'
 
+  option :universal
+
   def install
+
+    ENV.universal_binary if build.universal?
 
     # Fix build files
     inreplace 'Source/Utils/XnSensorServer/SensorServer.cpp', "/var/log/primesense/XnSensorServer/", "#{var}/log/primesense/XnSensorServer/"

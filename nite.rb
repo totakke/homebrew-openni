@@ -1,7 +1,7 @@
 #
-#   openni-formula
-#   http://github.com/totakke/openni-formula
-#   Copyright (C) 2012, Toshiki TAKEUCHI.
+#   homebrew-openni
+#   http://github.com/totakke/homebrew-openni
+#   Copyright (C) 2012-2013, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,12 +22,16 @@ class Nite < Formula
 
   homepage 'http://www.openni.org/'
   url 'http://www.openni.org/wp-content/uploads/2012/12/NITE-Bin-MacOSX-v1.5.2.21.tar.zip'
-  version 'stable-1.5.2.21'
+  version '1.5.2.21'
   sha1 '9dad7d093e02cf2edc50ac5e61f224eb07ba7c7e'
 
   depends_on 'openni'
 
+  option :universal
+
   def install
+
+    ENV.universal_binary if build.universal?
 
     system 'tar zxvf NITE-Bin-MacOSX-v1.5.2.21.tar.bz2'
     cd 'NITE-Bin-Dev-MacOSX-v1.5.2.21'

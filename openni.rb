@@ -1,7 +1,7 @@
 #
-#   openni-formula
-#   http://github.com/totakke/openni-formula
-#   Copyright (C) 2012, Toshiki TAKEUCHI.
+#   homebrew-openni
+#   http://github.com/totakke/homebrew-openni
+#   Copyright (C) 2012-2013, Toshiki TAKEUCHI.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,16 +21,16 @@ require 'formula'
 class Openni < Formula
 
   homepage 'http://www.openni.org/'
-  url 'https://github.com/OpenNI/OpenNI/tarball/Stable-1.5.2.23'
+  url 'https://github.com/OpenNI/OpenNI/archive/Stable-1.5.2.23.tar.gz'
   version 'stable-1.5.2.23'
-  sha1 'df8998be4e20664f11c7894bca0a2697815ef4b4'
+  sha1 '1127cd9d82062b1a1ef68d25e39b4b65ac399c79'
 
   head 'https://github.com/OpenNI/OpenNI.git'
 
   devel do
-    url 'https://github.com/OpenNI/OpenNI/tarball/Unstable-1.5.4.0'
+    url 'https://github.com/OpenNI/OpenNI/archive/Unstable-1.5.4.0.tar.gz'
     version 'unstable-1.5.4.0'
-    sha1 '873bcfd47af26d615247db2f0e632e651d33834f'
+    sha1 '69eb24999b70c46e0befd5eff4a9c9a70d218f41'
   end
 
   depends_on :automake
@@ -38,7 +38,11 @@ class Openni < Formula
   depends_on 'libusb' => 'universal'
   depends_on 'doxygen' => :build
 
+  option :universal
+
   def install
+
+    ENV.universal_binary if build.universal?
 
     # Fix build files
     inreplace 'Source/OpenNI/XnOpenNI.cpp', '/var/lib/ni/', "#{var}/lib/ni/"

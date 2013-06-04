@@ -16,10 +16,10 @@ You can choose a proper module for your device.
     * stable-5.1.0.41
     * (--devel) unstable-5.1.2.1
 * SensorKinect
-    * stable-5.1.0.25
-    * (--devel) unstable-5.1.2.1
+    * 0.91-5.1.0.25
+    * (--devel) 0.93-5.1.2.1
 * NITE
-    * stable-1.5.2.21
+    * 1.5.2.21
 
 ## Usage
 
