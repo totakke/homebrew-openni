@@ -1,11 +1,13 @@
 # homebrew-openni
 
-homebrew-openni is a project for installing [OpenNI](http://openni.org/), NITE, and Sensor module with [Homebrew](http://mxcl.github.com/homebrew/).
+homebrew-openni is a project for installing [OpenNI][openni], NITE, and Sensor module with [Homebrew][homebrew].
 
 You can install these packages in Homebrew installing directory (default: /usr/local) by simple commands.
 Uninstalling is also easy.
-This project does not provide only [Sensor](https://github.com/PrimeSense/Sensor) module (sensor.rb) for Xtion and Xtion PRO LIVE but also [SensorKinect](https://github.com/avin2/SensorKinect) module (sensor-kinect.rb) for Microsoft Kinect sensor.
+This project does not provide only [Sensor][sensor] module (sensor.rb) for Xtion and Xtion PRO LIVE but also [SensorKinect][sensor-kinect] module (sensor-kinect.rb) for Microsoft Kinect sensor.
 You can choose a proper module for your device.
+
+If you want to use OpenNI2, refer to [homebrew-openni2][homebrew-openni2].
 
 ## Versions
 
@@ -75,9 +77,11 @@ If you fail to install OpenNI, uninstall `libusb` and install OpenNI again.
 
 ## License
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+Code is under the [BSD 2 Clause (NetBSD) license][license].
 
-You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and limitations under the License.
+[openni]:http://openni.org/
+[homebrew]:http://mxcl.github.com/homebrew/
+[sensor]:https://github.com/PrimeSense/Sensor
+[sensor-kinect]:https://github.com/avin2/SensorKinect
+[homebrew-openni2]:https://github.com/totakke/homebrew-openni2
+[license]:https://github.com/totakke/homebrew-openni/blob/master/LICENSE

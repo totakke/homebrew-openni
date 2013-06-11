@@ -1,25 +1,6 @@
-#
-#   homebrew-openni
-#   http://github.com/totakke/homebrew-openni
-#   Copyright (C) 2012-2013, Toshiki TAKEUCHI.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 require 'formula'
 
 class Nite < Formula
-
   homepage 'http://www.openni.org/'
   url 'http://www.openni.org/wp-content/uploads/2012/12/NITE-Bin-MacOSX-v1.5.2.21.tar.zip'
   version '1.5.2.21'
@@ -30,7 +11,6 @@ class Nite < Formula
   option :universal
 
   def install
-
     ENV.universal_binary if build.universal?
 
     system 'tar zxvf NITE-Bin-MacOSX-v1.5.2.21.tar.bz2'
@@ -103,5 +83,4 @@ class Nite < Formula
     # niLicense
     system "#{HOMEBREW_PREFIX}/bin/niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4="
   end
-
 end
