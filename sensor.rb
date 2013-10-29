@@ -14,6 +14,8 @@ class Sensor < Formula
     sha1 '72b933ea48afe6216c2e9301fa023e1daac649d3'
   end
 
+  conflicts_with 'sensor-kinect'
+
   depends_on 'openni'
 
   option :universal
