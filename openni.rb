@@ -20,11 +20,15 @@ class Openni < Formula
   depends_on 'doxygen' => :build
 
   option :universal
+  
+  def patches
+    [
+      "https://github.com/OpenNI/OpenNI/pull/92.patch",
+    ]
+  end
 
   def install
     ENV.universal_binary if build.universal?
-
-    ENV.cxx += ' -stdlib=libstdc++' if ENV.compiler == :clang && MacOS.version >= :mavericks
 
     # Fix build files
     inreplace 'Source/OpenNI/XnOpenNI.cpp', '/var/lib/ni/', "#{var}/lib/ni/"
