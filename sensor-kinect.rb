@@ -1,35 +1,26 @@
 require 'formula'
 
 class SensorKinect < Formula
-  homepage 'https://github.com/avin2/SensorKinect/'
-  url 'https://github.com/avin2/SensorKinect/archive/v0.91-5.1.0.25.tar.gz'
-  version '0.91-5.1.0.25'
-  sha1 'ca50ff27d706a92f71063154e8353efe0bf1eba2'
-
-  head 'https://github.com/avin2/SensorKinect.git'
-
-  devel do
-    url 'https://github.com/avin2/SensorKinect/archive/v0.93-5.1.2.1.tar.gz'
-    version '0.93-5.1.2.1'
-    sha1 'd34f49da4edf8c5febc93a4c95c13d2bee73048e'
-  end
+  homepage 'https://github.com/ruedigerH2/SensorKinect/'
+  url 'https://github.com/ruedigerH2/SensorKinect.git', :revision => '97a258a4ae0f2e4c4565adec74f917847a3ab1dd'
+  version '0.94'
+  sha1 '97a258a4ae0f2e4c4565adec74f917847a3ab1dd'
+  head 'https://github.com/ruedigerH2/SensorKinect.git'
 
   conflicts_with 'sensor'
 
-  depends_on 'openni'
+  depends_on 'openni' => (build.universal?) ? ['universal'] : []
 
   option :universal
 
   def install
     ENV.universal_binary if build.universal?
 
-    ENV.cxx += ' -stdlib=libstdc++' if ENV.compiler == :clang && MacOS.version >= :mavericks
-
     # Fix build files
     inreplace 'Source/Utils/XnSensorServer/SensorServer.cpp', "/var/log/primesense/XnSensorServer/", "#{var}/log/primesense/XnSensorServer/"
     inreplace 'Platform/Linux/Build/EngineLibMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
     inreplace 'Platform/Linux/Build/Utils/EngineUtilMakefile', '/usr/include/ni', "#{HOMEBREW_PREFIX}/include/ni"
-    inreplace 'Platform/Linux/CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((2))'
+    inreplace 'Platform/Linux/CreateRedist/RedistMaker', 'echo $((N_CORES*2))', 'echo $((1))'
     inreplace 'Platform/Linux/Build/Common/CommonJavaMakefile', '/usr/share/java', "#{share}/java"
 
     # Build SensorKinect
@@ -37,24 +28,16 @@ class SensorKinect < Formula
     chmod 0755, 'RedistMaker'
     system './RedistMaker'
 
-    redist_dir = Dir.glob('../Redist/Sensor-Bin-MacOSX-v*')[0]
-    cd redist_dir
+    cd Dir.glob('../Redist/Sensor-Bin-MacOSX-v*')[0]
 
-    # Install bins
     bin.install Dir['Bin/*']
-
-    # Install libs
     lib.install Dir['Lib/*']
+    (etc+'primesense').install 'Config/GlobalDefaultsKinect.ini'
+  end
 
-    # Copy config file
-    mkpath "#{etc}/primesense"
-    cp 'Config/GlobalDefaultsKinect.ini', "#{etc}/primesense"
-
-    # niReg
+  def post_install
     system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnDeviceSensorV2KM.dylib #{etc}/primesense"
     system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnDeviceFile.dylib #{etc}/primesense"
-
-    # Create log directory
     mkpath "#{var}/log/primesense/XnSensorServer"
     chmod 0777, "#{var}/log/primesense/XnSensorServer"
   end
