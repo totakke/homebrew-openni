@@ -29,12 +29,10 @@ class Nite < Formula
     lib.install Dir['Bin/libXnVNITE.jni*.dylib']
 
     # Install includes
-    mkpath "#{include}/nite"
-    cp_r Dir['Include/*'], "#{include}/nite"
+    (include+'nite').install Dir['Include/*']
 
     # Install jar
-    mkpath "#{share}/java"
-    cp 'Bin/com.primesense.NITE.jar', "#{share}/java"
+    (share+'java').install 'Bin/com.primesense.NITE.jar'
 
     # Install features modules
     Dir.glob('Features*').each do |fdir|
@@ -69,20 +67,15 @@ class Nite < Formula
     # Run make
     system 'make' if File.exist?('Makefile')
 
-    # Install samples
-    sample_dir = "#{prefix}/sample"
-    mkpath sample_dir
-    cp_r Dir['Samples/*'], sample_dir
-    prefix.install 'Data'
+    (share+'nite/samples').install Dir['Samples/*']
+    (share+'nite').install 'Data'
+    doc.install 'Documentation'
+  end
 
-    # Install docs
-    doc.install Dir['Documentation']
-
-    # niReg
+  def post_install
     system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnVFeatures_1_5_2.dylib #{etc}/primesense/Features_1_5_2"
     system "#{HOMEBREW_PREFIX}/bin/niReg #{lib}/libXnVHandGenerator_1_5_2.dylib #{etc}/primesense/Hands_1_5_2"
 
-    # niLicense
     system "#{HOMEBREW_PREFIX}/bin/niLicense PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4="
   end
 end
