@@ -6,12 +6,14 @@ class Nite < Formula
   version '1.5.2.21'
   sha1 '9dad7d093e02cf2edc50ac5e61f224eb07ba7c7e'
 
-  depends_on 'openni'
+  depends_on 'openni' => (build.universal?) ? ['universal'] : []
 
   option :universal
 
   def install
     ENV.universal_binary if build.universal?
+
+    cxxstdlib_check :skip
 
     system 'tar zxvf NITE-Bin-MacOSX-v1.5.2.21.tar.bz2'
     cd 'NITE-Bin-Dev-MacOSX-v1.5.2.21'
