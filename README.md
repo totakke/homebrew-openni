@@ -1,6 +1,6 @@
 # homebrew-openni
 
-homebrew-openni is a project for installing [OpenNI][openni], NITE, and Sensor module with [Homebrew][homebrew].
+homebrew-openni is a project for installing [OpenNI][openni] related modules with [Homebrew][homebrew]: Sensor, SensorKinect, and NITE.
 
 You can install these packages in Homebrew installing directory (default: /usr/local) by simple commands.
 Uninstalling is also easy.
@@ -9,32 +9,32 @@ You can choose a proper module for your device.
 
 If you want to use OpenNI2, refer to [homebrew-openni2][homebrew-openni2].
 
-## Versions
+## NOTICE
 
-* OpenNI
-    * stable-1.5.2.23
-    * (--devel) unstable-1.5.4.0
+OpenNI formula is now provided by [homebrew-science][homebrew-science], so homebrew-openni won't provide it.
+homebrew-openni is supporting Sensor, SensorKinect, and NITE formulas.
+
+## Version info
+
 * Sensor
-    * stable-5.1.0.41
-    * (--devel) unstable-5.1.2.1
+    * v5.1.6.6
 * SensorKinect
-    * 0.91-5.1.0.25
-    * (--devel) 0.93-5.1.2.1
+    * v0.94
 * NITE
-    * 1.5.2.21
+    * v1.5.2.21
 
 ## Usage
 
 ### Download formulas
 
-First, tap homebrew-openni.
+First, tap homebrew-science and homebrew-openni.
 
+    $ brew tap homebrew/science
     $ brew tap totakke/openni
 
 ### Install
 
 Install OpenNI, Sensor/SensorKinect, and NITE with Homebrew.
-If you want to install unstable release, add `--devel` option.
 
     Install OpenNI.
     $ brew install openni
@@ -52,7 +52,7 @@ If you want to install unstable release, add `--devel` option.
 
 Connect a device to the PC and run a sample program.
 
-    $ cd `brew --cellar openni`/stable-1.5.2.23/sample/Bin/x64-Release
+    $ cd `brew --cellar openni`/1.5.7.10/share/sample/Bin/x64-Release
     $ ./Sample-NiSimpleViewer
 
 ### Uninstall
@@ -68,20 +68,14 @@ If you want to clean entirely,
     $ cd `brew --prefix`
     $ rm -rf var/lib/ni var/log/primesense/XnSensorServer etc/primesense
 
-## Note
-
-If you fail to install OpenNI, uninstall `libusb` and install OpenNI again.
-
-    $ brew uninstall libusb
-    $ brew install openni
-
 ## License
 
 Code is under the [BSD 2 Clause (NetBSD) license][license].
 
 [openni]:http://openni.org/
 [homebrew]:http://mxcl.github.com/homebrew/
+[homebrew-science]:https://github.com/Homebrew/homebrew-science
 [sensor]:https://github.com/PrimeSense/Sensor
-[sensor-kinect]:https://github.com/avin2/SensorKinect
+[sensor-kinect]:https://github.com/ruedigerH2/SensorKinect/
 [homebrew-openni2]:https://github.com/totakke/homebrew-openni2
 [license]:https://github.com/totakke/homebrew-openni/blob/master/LICENSE
