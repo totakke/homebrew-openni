@@ -1,8 +1,8 @@
 require 'formula'
 
 class Nite < Formula
-  homepage 'http://www.openni.org/'
-  url 'http://www.openni.org/wp-content/uploads/2012/12/NITE-Bin-MacOSX-v1.5.2.21.tar.zip'
+  homepage 'https://onedrive.live.com/redir?resid=33B0FE678911B037%21573'
+  url 'https://onedrive.live.com/download?resid=33B0FE678911B037%21573'
   version '1.5.2.21'
   sha1 '9dad7d093e02cf2edc50ac5e61f224eb07ba7c7e'
 
