@@ -52,7 +52,7 @@ Install OpenNI, Sensor/SensorKinect, and NITE with Homebrew.
 
 Connect a device to the PC and run a sample program.
 
-    $ cd `brew --cellar openni`/1.5.7.10/share/sample/Bin/x64-Release
+    $ cd `brew --prefix`/share/openni/samples/Bin/x64-Release
     $ ./Sample-NiSimpleViewer
 
 ### Uninstall
