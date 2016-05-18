@@ -1,5 +1,3 @@
-require 'formula'
-
 class SensorKinect < Formula
   homepage 'https://github.com/ruedigerH2/SensorKinect/'
   url 'https://github.com/ruedigerH2/SensorKinect.git', :revision => '97a258a4ae0f2e4c4565adec74f917847a3ab1dd'

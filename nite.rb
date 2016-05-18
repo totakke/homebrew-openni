@@ -1,5 +1,3 @@
-require 'formula'
-
 class Nite < Formula
   homepage 'https://onedrive.live.com/redir?resid=33B0FE678911B037%21573'
   url 'https://onedrive.live.com/download?resid=33B0FE678911B037%21573'

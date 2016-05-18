@@ -1,5 +1,3 @@
-require 'formula'
-
 class Sensor < Formula
   homepage 'http://www.primesense.com'
   url 'https://github.com/PrimeSense/Sensor/archive/Stable-5.1.6.6.tar.gz'
