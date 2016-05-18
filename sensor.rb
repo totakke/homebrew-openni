@@ -2,7 +2,7 @@ class Sensor < Formula
   desc "PrimeSense sensor module for OpenNI"
   homepage 'http://www.primesense.com'
   url 'https://github.com/PrimeSense/Sensor/archive/Stable-5.1.6.6.tar.gz'
-  sha1 'caa461ddac5d7a562d44a2c278eea62b12aafe4c'
+  sha256 "d24797ca2d37d618346724378a664d0f37ad75c7e9e78533b8bc9188d3a97fd2"
   head 'https://github.com/PrimeSense/Sensor.git'
 
   conflicts_with 'sensor-kinect'

@@ -3,7 +3,7 @@ class Nite < Formula
   homepage 'https://onedrive.live.com/redir?resid=33B0FE678911B037%21573'
   url 'https://onedrive.live.com/download?resid=33B0FE678911B037%21573'
   version '1.5.2.21'
-  sha1 '9dad7d093e02cf2edc50ac5e61f224eb07ba7c7e'
+  sha256 "1d67ab0e69ef3417f8e02f0c4aac0fbbb4eb3bdce267e8617097b6f6da8a5641"
 
   option :universal
 
