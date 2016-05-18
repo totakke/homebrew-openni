@@ -5,9 +5,9 @@ class Nite < Formula
   version '1.5.2.21'
   sha1 '9dad7d093e02cf2edc50ac5e61f224eb07ba7c7e'
 
-  depends_on 'openni' => (build.universal?) ? ['universal'] : []
-
   option :universal
+
+  depends_on 'openni' => (build.universal?) ? ['universal'] : []
 
   def install
     ENV.universal_binary if build.universal?

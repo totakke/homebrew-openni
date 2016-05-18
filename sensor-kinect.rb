@@ -8,9 +8,9 @@ class SensorKinect < Formula
 
   conflicts_with 'sensor'
 
-  depends_on 'openni' => (build.universal?) ? ['universal'] : []
-
   option :universal
+
+  depends_on 'openni' => (build.universal?) ? ['universal'] : []
 
   def install
     ENV.universal_binary if build.universal?
