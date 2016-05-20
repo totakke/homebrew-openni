@@ -1,7 +1,7 @@
 class Nite < Formula
   desc "The most advance and robust 3D computer vision middleware"
-  homepage "https://onedrive.live.com/redir?resid=33B0FE678911B037%21573"
-  url "https://onedrive.live.com/download?resid=33B0FE678911B037%21573"
+  homepage "http://openni.ru/"
+  url "http://openni.ru/wp-content/uploads/2012/12/NITE-Bin-MacOSX-v1.5.2.21.tar.zip"
   version "1.5.2.21"
   sha256 "1d67ab0e69ef3417f8e02f0c4aac0fbbb4eb3bdce267e8617097b6f6da8a5641"
 
