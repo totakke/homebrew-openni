@@ -12,7 +12,8 @@ class Nite < Formula
   def install
     ENV.universal_binary if build.universal?
 
-    cxxstdlib_check :skip
+    # commented to fix the following error when installing: "Error: Calling Formula#cxxstdlib_check in install is disabled!"
+    # cxxstdlib_check :skip
 
     system "tar", "zxvf", "NITE-Bin-MacOSX-v1.5.2.21.tar.bz2"
     cd "NITE-Bin-Dev-MacOSX-v1.5.2.21"
