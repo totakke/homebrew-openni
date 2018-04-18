@@ -40,7 +40,7 @@ class Sensor < Formula
     chmod 0777, "#{var}/log/primesense/XnSensorServer"
   end
 
-  def caveats; <<-EOS.undent
+  def caveats; <<~EOS
     OpenNI formula is now provided by homebrew-science.
     Tap homebrew-science in advance.
       `brew tap homebrew/science`
