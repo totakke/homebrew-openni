@@ -79,7 +79,7 @@ class Nite < Formula
     system "#{HOMEBREW_PREFIX}/bin/niLicense", "PrimeSense", "0KOIk2JeIBYClPWVnMoRKn5cdY4="
   end
 
-  def caveats; <<-EOS.undent
+  def caveats; <<~EOS
     OpenNI formula is now provided by homebrew-science.
     Tap homebrew-science in advance.
       `brew tap homebrew/science`
