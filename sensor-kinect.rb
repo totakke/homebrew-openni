@@ -41,9 +41,9 @@ class SensorKinect < Formula
   end
 
   def caveats; <<~EOS
-    OpenNI formula is now provided by homebrew-science.
-    Tap homebrew-science in advance.
-      `brew tap homebrew/science`
+    OpenNI formula is now provided by brewsci/science.
+    Tap brewsci/science in advance.
+      `brew tap brewsci/science`
     EOS
   end
 end

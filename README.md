@@ -11,7 +11,7 @@ If you want to use OpenNI2, refer to [homebrew-openni2][homebrew-openni2].
 
 ## NOTICE
 
-OpenNI formula is now provided by [homebrew-science][homebrew-science], so homebrew-openni won't provide it.
+OpenNI formula is now provided by [brewsci/science](https://github.com/brewsci/homebrew-science), so homebrew-openni won't provide it.
 homebrew-openni is supporting Sensor, SensorKinect, and NITE formulas.
 
 ## Version info
@@ -27,9 +27,9 @@ homebrew-openni is supporting Sensor, SensorKinect, and NITE formulas.
 
 ### Download formulas
 
-First, tap homebrew-science and homebrew-openni.
+First, tap brewsci/science and homebrew-openni.
 
-    $ brew tap homebrew/science
+    $ brew tap brewsci/science
     $ brew tap totakke/openni
 
 ### Install
@@ -74,7 +74,6 @@ Code is under the [BSD 2 Clause (NetBSD) license][license].
 
 [openni]:http://openni.org/
 [homebrew]:http://mxcl.github.com/homebrew/
-[homebrew-science]:https://github.com/Homebrew/homebrew-science
 [sensor]:https://github.com/PrimeSense/Sensor
 [sensor-kinect]:https://github.com/ruedigerH2/SensorKinect/
 [homebrew-openni2]:https://github.com/totakke/homebrew-openni2
